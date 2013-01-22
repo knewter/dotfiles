@@ -1,5 +1,5 @@
 set nocompatible
-filetype plugin on
+filetype plugin indent on
 syntax on
 
 set rtp+=~/.vim/bundle/vundle
@@ -23,6 +23,7 @@ Bundle 'tpope/vim-markdown'
 Bundle 'reusee/vim.rust'
 Bundle 'slim-template/vim-slim'
 Bundle 'jasonkuhrt/Tomorrow-Theme'
+Bundle 'ervandew/supertab'
 
 let g:vimwiki_use_mouse=0
 Bundle 'vim-scripts/vimwiki'
@@ -58,7 +59,7 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
 set laststatus=2
 
 " Font
-set guifont="Terminus\ 9"
+"set guifont="Terminus\ 9"
 
 " Show trailing whitespace and spaces before a tab:
 :highlight ExtraWhitespace ctermbg=red guibg=red
@@ -101,3 +102,6 @@ nmap <Leader>wf <Plug>VimwikiFollowLink
 
 " Remove highlights
 nmap <Leader><CR> :nohlsearch<cr>
+
+let g:Powerline_symbols="fancy"
+python from powerline.bindings.vim import source_plugin; source_plugin()
