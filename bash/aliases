@@ -1,0 +1,44 @@
+alias sg='script/generate'
+alias ss='script/server'
+alias sc='script/console'
+alias sp='script/plugin'
+alias rdb='rake db:migrate'
+alias rtu='rake test:units'
+alias rtf='rake test:functionals'
+alias ri='ri -f ansi -T'
+alias r='rails'
+alias gr='grep -ri'
+
+alias gplom="git pull origin master"
+alias gpsom="git push origin master"
+alias gcow='git checkout work'
+alias gcom='git checkout master'
+alias gmw='git merge work'
+alias gmm='git merge master'
+alias gs='git status'
+alias gf='git fetch'                                                                                                                                                      
+alias gfo='git fetch origin' 
+
+alias grep='grep --color '
+
+alias 7up="svn up"
+alias sevenup="svn up"
+alias svnup="svn up"
+
+alias sshm='ssh isotope11@mystock.com'
+
+alias pbcopy='xsel -b'
+alias pbpaste='xsel -o'
+
+alias ack='ack-grep'
+
+alias go='gnome-open'
+
+alias isotope='ssh isotope11.selfip.com'
+
+alias 'r'='bundle exec rails'
+
+alias jboss='cd ~/software/jboss-5.1.0.GA/; ./bin/run.sh'                                                                                                                 
+alias solr='cd ~/projects/dir_search/solr; ./solr run'                                                                                                                    
+alias api='cd ~/projects/USPTO_dir_api'                                                                                                                                   
+alias fe='cd ~/projects/USPTO_dir_frontend'   
