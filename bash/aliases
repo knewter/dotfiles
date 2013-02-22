@@ -43,5 +43,4 @@ alias solr='cd ~/projects/dir_search/solr; ./solr.sh run'
 alias api='cd ~/projects/USPTO_dir_api'
 alias fe='cd ~/projects/USPTO_dir_frontend'
 alias uspto='cd ~/projects/dir_search'
-
-alias webex='webex.sh'
+alias webex='~/bin/webex.sh'
