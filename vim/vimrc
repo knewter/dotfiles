@@ -2,6 +2,9 @@ set nocompatible
 filetype plugin indent on
 syntax on
 
+"""""""""""""""""""""""""""""""""""""""
+" VUNDLE BITS
+"""""""""""""""""""""""""""""""""""""""
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
@@ -33,6 +36,9 @@ Bundle 'xolox/vim-session'
 let g:vimwiki_use_mouse=0
 Bundle 'vim-scripts/vimwiki'
 
+"""""""""""""""""""""""""""""""""""""""
+" BACKUP / TMP FILES
+"""""""""""""""""""""""""""""""""""""""
 " taken from
 " http://stackoverflow.com/questions/4331776/change-vim-swap-backup-undo-file-name
 " Save your backups to a less annoying place than the current directory.
@@ -75,8 +81,15 @@ if exists("+undofile")
   set undofile
 endif
 
-" handle 256 colors in gnome terminal
-set t_Co=256
+"""""""""""""""""""""""""""""""""""""""
+" GENERAL EDITING SETUP
+"""""""""""""""""""""""""""""""""""""""
+" Prevent Vim from clobbering the scrollback buffer. See
+" http://www.shallowsky.com/linux/noaltscreen.html
+set t_ti= t_te=
+
+" display incomplete commands
+set showcmd
 
 let mapleader = ","
 
@@ -95,15 +108,35 @@ set incsearch
 set ignorecase
 set smartcase
 
-" Open the alternate file
-map ,, <C-^>
-
 " Tab completion
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
 
 " Status bar
 set laststatus=2
+
+" Turn off menu in gui
+set guioptions="agimrLt"
+" Turn off mouse click in gui
+set mouse=""
+
+" Theme...
+set t_Co=256
+set background=dark
+colorscheme Tomorrow-Night-Eighties
+
+" highlight the current line
+set cursorline
+" Highlight active column
+set cuc cul
+
+" Show linenumbers
+set number
+set ruler
+
+" Use Powerline
+let g:Powerline_symbols="fancy"
+python from powerline.bindings.vim import source_plugin; source_plugin()
 
 " Font
 "set guifont="Terminus\ 9"
@@ -118,25 +151,42 @@ augroup markdown
   au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 augroup END
 
-" Turn off menu in gui
-set guioptions="agimrLt"
-" Turn off mouse click in gui
-set mouse=""
+augroup vimrcEx
+  " Clear all autocmds in the group
+  autocmd!
+  autocmd FileType text setlocal textwidth=78
+  " Jump to last cursor position unless it's invalid or in an event handler
+  autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
 
-" Theme...
-set background=dark
-colorscheme Tomorrow-Night-Eighties
+  " Leave the return key alone when in command line windows, since it's used
+  " to run commands there.
+  autocmd! CmdwinEnter * :unmap <cr>
+  autocmd! CmdwinLeave * :call MapCR()
 
-" highlight the current line
-set cursorline
-" Highlight active column
-set cuc cul
+  au BufReadPost *.thor set syntax=ruby
 
-" Show linenumbers
-set number
-set ruler
+  " ftdetect isn't being pulled in from the vim-slim plugin for some reason
+  autocmd BufNewFile,BufRead *.slim set filetype=slim
 
-au BufReadPost *.thor set syntax=ruby
+  autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+augroup END
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MISC KEY MAPS
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Open the alternate file
+map ,, <C-^>
+
+" Can't be bothered to understand ESC vs <c-c> in insert mode
+imap <c-c> <esc>
+" Clear the search buffer when hitting return
+function! MapCR()
+  nnoremap <cr> :nohlsearch<cr>
+endfunction
+call MapCR()
 
 " Ack bits
 map <leader>a :Ack! -ai 
@@ -147,14 +197,7 @@ nmap <Leader>wf <Plug>VimwikiFollowLink
 " Remove highlights
 nmap <Leader><CR> :nohlsearch<cr>
 
-let g:Powerline_symbols="fancy"
-python from powerline.bindings.vim import source_plugin; source_plugin()
-
-" ftdetect isn't being pulled in from the vim-slim plugin for some reason
-autocmd BufNewFile,BufRead *.slim set filetype=slim
-
-autocmd BufNewFile,BufRead *.coffee set filetype=coffee
-
 " Run this file with rake
 map <leader>t :!rake test TEST=%<CR>
 map <leader>pt :!rake test_integration TEST=%<CR>
+map <leader>pct :!TEST_DRIVER=chrome rake test_integration TEST=%<CR>
