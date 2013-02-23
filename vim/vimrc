@@ -28,13 +28,18 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
-Bundle 'tpope/vim-ruby'
+Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-surround'
 Bundle 'walm/jshint.vim'
 Bundle 'xolox/vim-session'
 
 let g:vimwiki_use_mouse=0
 Bundle 'vim-scripts/vimwiki'
+
+let g:vroom_map_keys=0
+let g:vroom_spec_command='ruby '
+let g:vroom_use_colors=0
+Bundle 'skalnik/vim-vroom'
 
 """""""""""""""""""""""""""""""""""""""
 " BACKUP / TMP FILES
@@ -198,6 +203,23 @@ nmap <Leader>wf <Plug>VimwikiFollowLink
 nmap <Leader><CR> :nohlsearch<cr>
 
 " Run this file with rake
-map <leader>t :!rake test TEST=%<CR>
+map <leader>t :VroomRunTestFile<cr>
+map <leader>T :VroomRunNearestTest<cr>
 map <leader>pt :!rake test_integration TEST=%<CR>
 map <leader>pct :!TEST_DRIVER=chrome rake test_integration TEST=%<CR>
+map <leader>put :!rake test_units TEST=%<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NO ARROW KEYS COME ON
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <Left> :echo "no!"<cr>
+map <Right> :echo "no!"<cr>
+map <Up> :echo "no!"<cr>
+map <Down> :echo "no!"<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" OPEN FILES IN DIR OF CURRENT FILE
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>e :edit %%
+map <leader>v :view %%
