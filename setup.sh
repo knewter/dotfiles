@@ -1,6 +1,7 @@
 #!/bin/bash
 
-ln -s `pwd`/vim/vimrc ~/.vimrc
+ln -sf `pwd`/vim/vimrc ~/.vimrc
 mkdir -p ~/vim/ftplugin
-ln -s `pwd`/vim/ftplugin/ruby.vim ~/vim/ftplugin/ruby.vim
-ln -s `pwd`/bash/aliases ~/.bash_files/aliases
+ln -sf `pwd`/vim/ftplugin/ruby.vim ~/vim/ftplugin/ruby.vim
+ln -sf `pwd`/bash/aliases ~/.bash_files/aliases
+ln -sf `pwd`/ack/ackrc ~/.ackrc
