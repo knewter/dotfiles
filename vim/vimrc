@@ -32,6 +32,8 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-surround'
 Bundle 'walm/jshint.vim'
 Bundle 'xolox/vim-session'
+Bundle 'leafgarland/typescript-vim'
+Bundle 'airblade/vim-gitgutter'
 
 let g:vimwiki_use_mouse=0
 Bundle 'vim-scripts/vimwiki'
@@ -172,6 +174,7 @@ augroup vimrcEx
   autocmd! CmdwinLeave * :call MapCR()
 
   au BufReadPost *.thor set syntax=ruby
+  au BufReadPost *.ts set syntax=typescript
 
   " ftdetect isn't being pulled in from the vim-slim plugin for some reason
   autocmd BufNewFile,BufRead *.slim set filetype=slim
