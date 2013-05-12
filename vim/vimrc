@@ -16,7 +16,6 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'alunny/pegjs-vim'
 Bundle 'ervandew/supertab'
 Bundle 'int3/vim-extradite'
-Bundle 'jasonkuhrt/Tomorrow-Theme'
 Bundle 'jtratner/vim-flavored-markdown'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'mileszs/ack.vim'
@@ -34,6 +33,7 @@ Bundle 'walm/jshint.vim'
 Bundle 'xolox/vim-session'
 Bundle 'leafgarland/typescript-vim'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'tomasr/molokai'
 
 let g:vimwiki_use_mouse=0
 Bundle 'vim-scripts/vimwiki'
@@ -42,6 +42,9 @@ let g:vroom_map_keys=0
 let g:vroom_spec_command='ruby '
 let g:vroom_use_colors=0
 Bundle 'skalnik/vim-vroom'
+
+let g:molokai_original=1
+let g:rehash256=1
 
 """""""""""""""""""""""""""""""""""""""
 " BACKUP / TMP FILES
@@ -130,7 +133,8 @@ set mouse=""
 " Theme...
 set t_Co=256
 set background=dark
-colorscheme Tomorrow-Night-Eighties
+"colorscheme grb256
+colorscheme molokai
 
 " highlight the current line
 set cursorline
@@ -142,8 +146,8 @@ set number
 set ruler
 
 " Use Powerline
-let g:Powerline_symbols="fancy"
-python from powerline.bindings.vim import source_plugin; source_plugin()
+"let g:Powerline_symbols="fancy"
+"python from powerline.bindings.vim import source_plugin; source_plugin()
 
 " Font
 "set guifont="Terminus\ 9"
