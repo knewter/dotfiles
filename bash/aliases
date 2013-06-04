@@ -18,6 +18,8 @@ alias gmm='git merge master'
 alias gs='git status'
 alias gf='git fetch'                                                                                                                                                      
 alias gfo='git fetch origin' 
+alias ga='git add .'
+alias gc='git commit -v'
 
 alias grep='grep --color '
 
@@ -44,3 +46,5 @@ alias api='cd ~/projects/USPTO_dir_api'
 alias fe='cd ~/projects/USPTO_dir_frontend'
 alias uspto='cd ~/projects/dir_search'
 alias webex='~/bin/webex.sh'
+
+alias be='bundle exec'
