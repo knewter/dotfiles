@@ -17,6 +17,7 @@ Bundle 'alunny/pegjs-vim'
 Bundle 'ervandew/supertab'
 Bundle 'int3/vim-extradite'
 Bundle 'jasonkuhrt/Tomorrow-Theme'
+Bundle 'chriskempson/base16-vim'
 Bundle 'jtratner/vim-flavored-markdown'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'mileszs/ack.vim'
@@ -34,13 +35,13 @@ Bundle 'walm/jshint.vim'
 Bundle 'xolox/vim-session'
 Bundle 'leafgarland/typescript-vim'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'kien/ctrlp.vim'
 
 let g:vimwiki_use_mouse=0
 Bundle 'vim-scripts/vimwiki'
 
 let g:vroom_map_keys=0
-let g:vroom_spec_command='ruby '
-let g:vroom_use_colors=0
+let g:vroom_use_colors=1
 Bundle 'skalnik/vim-vroom'
 
 """""""""""""""""""""""""""""""""""""""
@@ -131,6 +132,7 @@ set mouse=""
 set t_Co=256
 set background=dark
 colorscheme Tomorrow-Night-Eighties
+"colorscheme base16-default
 
 " highlight the current line
 set cursorline
