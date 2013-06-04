@@ -34,13 +34,12 @@ Bundle 'xolox/vim-session'
 Bundle 'leafgarland/typescript-vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'tomasr/molokai'
+Bundle 'kien/ctrlp.vim'
 
 let g:vimwiki_use_mouse=0
 Bundle 'vim-scripts/vimwiki'
 
 let g:vroom_map_keys=0
-let g:vroom_spec_command='ruby '
-let g:vroom_use_colors=0
 Bundle 'skalnik/vim-vroom'
 
 let g:molokai_original=1
