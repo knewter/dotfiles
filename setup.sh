@@ -7,3 +7,4 @@ mkdir -p ~/.bash_files
 ln -sf `pwd`/bash/aliases ~/.bash_files/aliases
 ln -sf `pwd`/ack/ackrc ~/.ackrc
 ln -sf `pwd`/xmodmap/xmodmap-esc ~/.xmodmap-esc
+ln -sf `pwd`/tmux/tmux.conf ~/.tmux.conf
