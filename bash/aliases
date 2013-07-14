@@ -48,3 +48,5 @@ alias uspto='cd ~/projects/dir_search'
 alias webex='~/bin/webex.sh'
 
 alias be='bundle exec'
+
+alias tmux='tmux -2'
