@@ -194,6 +194,10 @@ augroup vimrcEx
   autocmd BufNewFile,BufRead *.slim set filetype=slim
 
   autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+
+  " ftdetect isn't being pulled in from vim-elixir for some reason
+  au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
+  au FileType elixir setl sw=2 sts=2 et iskeyword+=!,?
 augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
