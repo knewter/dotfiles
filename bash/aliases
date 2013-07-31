@@ -55,3 +55,6 @@ alias ber='bundle exec ruby'
 alias beg='bundle exec guard'
 
 alias jenkins='ssh -i ~/.ssh/jenkins.pem ubuntu@192.168.1.151'
+
+alias tmux='tmux -2'
+
