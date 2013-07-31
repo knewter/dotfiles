@@ -39,6 +39,10 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'kikijump/tslime.vim'
 Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'tpope/vim-fireplace'
+Bundle 'tpope/vim-classpath'
+Bundle 'guns/vim-clojure-static'
+
 
 let g:vimwiki_use_mouse=0
 Bundle 'vim-scripts/vimwiki'
