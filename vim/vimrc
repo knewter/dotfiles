@@ -37,6 +37,7 @@ Bundle 'leafgarland/typescript-vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'tomasr/molokai'
 Bundle 'kien/ctrlp.vim'
+Bundle 'elixir-lang/vim-elixir'
 
 let g:vimwiki_use_mouse=0
 Bundle 'vim-scripts/vimwiki'
@@ -216,9 +217,6 @@ nmap <Leader><CR> :nohlsearch<cr>
 " Run this file with rake
 map <leader>t :VroomRunTestFile<cr>
 map <leader>T :VroomRunNearestTest<cr>
-map <leader>pt :!rake test_integration TEST=%<CR>
-map <leader>pct :!TEST_DRIVER=chrome rake test_integration TEST=%<CR>
-map <leader>put :!rake test_units TEST=%<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NO ARROW KEYS COME ON

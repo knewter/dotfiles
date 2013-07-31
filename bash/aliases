@@ -12,11 +12,14 @@ alias gr='grep -ri'
 alias gplom="git pull origin master"
 alias gpsom="git push origin master"
 alias gcow='git checkout work'
+alias gco='git checkout'
 alias gcom='git checkout master'
 alias gmw='git merge work'
 alias gmm='git merge master'
+alias gmom='git merge origin master'
 alias gs='git status'
 alias gf='git fetch'                                                                                                                                                      
+alias gd='git diff'
 alias gfo='git fetch origin' 
 alias ga='git add .'
 alias gc='git commit -v'
@@ -48,3 +51,7 @@ alias uspto='cd ~/projects/dir_search'
 alias webex='~/bin/webex.sh'
 
 alias be='bundle exec'
+alias ber='bundle exec ruby'
+alias beg='bundle exec guard'
+
+alias jenkins='ssh -i ~/.ssh/jenkins.pem ubuntu@192.168.1.151'
