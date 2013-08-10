@@ -43,6 +43,7 @@ Bundle 'tpope/vim-fireplace'
 Bundle 'tpope/vim-classpath'
 Bundle 'guns/vim-clojure-static'
 Bundle 'sudar/vim-arduino-syntax'
+Bundle 'bling/vim-airline'
 
 let g:vimwiki_use_mouse=0
 Bundle 'vim-scripts/vimwiki'
