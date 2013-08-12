@@ -15,7 +15,7 @@ alias ber='bundle exec ruby'
 alias beg='bundle exec guard'
 
 ######################################
-# Git Stiff
+# Git Stuff
 ######################################
 alias gplom="git pull origin master"
 alias gpsom="git push origin master"
@@ -26,9 +26,9 @@ alias gmw='git merge work'
 alias gmm='git merge master'
 alias gmom='git merge origin/master'
 alias gs='git status'
-alias gf='git fetch'                                                                                                                                                      
+alias gf='git fetch'
 alias gd='git diff'
-alias gfo='git fetch origin' 
+alias gfo='git fetch origin'
 alias ga='git add .'
 alias gc='git commit -v'
 
@@ -37,6 +37,7 @@ alias gc='git commit -v'
 ######################################
 alias gum="cd ~/javascript/gumshoe/frontend"
 alias tru="cd ~/rails/trucoin_rails"
+alias may="cd ~/rails/mayhem"
 
 ######################################
 # Misc Stuff
