@@ -2,7 +2,7 @@
 
 To get my chromebook / main desktop synergy setup working, two things have to happen:
 
-1) On the main desktop, `synergys -f ~/.synergy.conf`
+1) On the main desktop, `synergys -c ~/.synergy.conf`
 2) On the chromebook, do the following:
 ```
 # In a chromeos terminal:
