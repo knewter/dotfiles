@@ -38,6 +38,7 @@ alias gc='git commit -v'
 alias gum="cd ~/javascript/gumshoe/frontend"
 alias tru="cd ~/rails/trucoin_rails"
 alias may="cd ~/ruby/mayhem"
+alias expertvpn="sudo pon EXPeRT"
 
 ######################################
 # Misc Stuff
