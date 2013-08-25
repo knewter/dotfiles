@@ -178,7 +178,14 @@ set ruler
 augroup markdown
   au!
   au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
-  au BufReadPost *.md,*.markdown set tw=80
+  au BufReadPost *.md,*.markdown setlocal tw=80
+augroup END
+
+augroup erlang
+  au!
+  au BufNewFile,BufRead *.erl setlocal tabstop=4
+  au BufNewFile,BufRead *.erl setlocal shiftwidth=4
+  au BufNewFile,BufRead *.erl setlocal softtabstop=4
 augroup END
 
 augroup vimrcEx
