@@ -256,3 +256,11 @@ set secure " disable unsafe commands in local .vimrc files
 " Start scrolling 3 lines before the border
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set scrolloff=3
+
+"""""""""""""""""""""""""""""
+" Easier split navigation
+"""""""""""""""""""""""""""""
+map <C-J> <C-W>j<C-W>_
+map <C-K> <C-W>k<C-W>_
+map <C-H> <C-W>h<C-W>_
+map <C-L> <C-W>l<C-W>_
