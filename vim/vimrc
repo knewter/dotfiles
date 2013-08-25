@@ -22,7 +22,6 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'mileszs/ack.vim'
 Bundle 'reusee/vim.rust'
 Bundle 'slim-template/vim-slim'
-Bundle 'spolu/dwm.vim'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
@@ -43,6 +42,9 @@ Bundle 'tpope/vim-classpath'
 Bundle 'guns/vim-clojure-static'
 Bundle 'sudar/vim-arduino-syntax'
 Bundle 'bling/vim-airline'
+
+let g:airline_theme='luna'
+let g:airline_powerline_fonts=1
 
 let g:vimwiki_use_mouse=0
 Bundle 'vim-scripts/vimwiki'
