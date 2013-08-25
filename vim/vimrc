@@ -172,6 +172,7 @@ set ruler
 augroup markdown
   au!
   au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+  au BufReadPost *.md,*.markdown set tw=80
 augroup END
 
 augroup vimrcEx
