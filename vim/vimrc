@@ -12,7 +12,9 @@ call vundle#rc()
 " required!
 Bundle 'gmarik/vundle'
 
-Bundle 'altercation/vim-colors-solarized'
+"Bundle 'altercation/vim-colors-solarized'
+"Bundle 'dandorman/vim-colors'
+Bundle 'flazz/vim-colorschemes'
 Bundle 'alunny/pegjs-vim'
 Bundle 'ervandew/supertab'
 Bundle 'int3/vim-extradite'
@@ -146,6 +148,10 @@ set background=dark
 "colorscheme Tomorrow-Night-Eighties
 "colorscheme base16-default
 "colorscheme grb256
+"colorscheme mustang
+"colorscheme zenburn
+"colorscheme xoria256
+"colorscheme wombat256
 colorscheme molokai
 
 " highlight the current line
@@ -222,7 +228,7 @@ endfunction
 call MapCR()
 
 " Ack bits
-map <leader>a :Ack! -ai 
+map <leader>a :Ack! -ai
 
 " vimwiki config
 nmap <Leader>wf <Plug>VimwikiFollowLink
@@ -268,8 +274,9 @@ map <C-K> <C-W>k<C-W>_
 map <C-H> <C-W>h<C-W>_
 map <C-L> <C-W>l<C-W>_
 
-"""""""""""""""""""""""""""""
-" Custom split opening behaviour
-"""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""
+" Custom split opening / closing behaviour
+""""""""""""""""""""""""""""""""""""""""""
 set splitbelow
 map <C-N> :vsp .<CR>
+map <C-C> :q<CR>
