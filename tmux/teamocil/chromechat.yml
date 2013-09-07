@@ -1,0 +1,11 @@
+session:
+  name: "chromechat"
+  windows:
+    - name: "server"
+      root: "~/erlang/chromechat"
+      panes:
+        - cmd: "./start.sh"
+    - name: "vim"
+      root: "~/erlang/chromechat"
+      panes:
+        - cmd: "vim ."
