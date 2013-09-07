@@ -44,6 +44,7 @@ Bundle 'tpope/vim-classpath'
 Bundle 'guns/vim-clojure-static'
 Bundle 'sudar/vim-arduino-syntax'
 Bundle 'bling/vim-airline'
+Bundle 'roman/golden-ratio'
 
 let g:airline_theme='luna'
 let g:airline_powerline_fonts=1
@@ -149,9 +150,9 @@ set background=dark
 "colorscheme base16-default
 "colorscheme grb256
 "colorscheme mustang
-"colorscheme zenburn
 "colorscheme xoria256
 "colorscheme wombat256
+"colorscheme zenburn
 colorscheme molokai
 
 " highlight the current line
@@ -276,10 +277,11 @@ set scrolloff=3
 """""""""""""""""""""""""""""
 " Easier split navigation
 """""""""""""""""""""""""""""
-map <C-J> <C-W>j<C-W>_
-map <C-K> <C-W>k<C-W>_
-map <C-H> <C-W>h<C-W>_
-map <C-L> <C-W>l<C-W>_
+map <C-J> <C-W>j<C-W>_:GoldenRatioResize<CR>
+map <C-K> <C-W>k<C-W>_:GoldenRatioResize<CR>
+map <C-H> <C-W>h<C-W>_:GoldenRatioResize<CR>
+map <C-L> <C-W>l<C-W>_:GoldenRatioResize<CR>
+map <C-Space> :GoldenRatioResize<CR>
 
 """"""""""""""""""""""""""""""""""""""""""
 " Custom split opening / closing behaviour

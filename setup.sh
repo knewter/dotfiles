@@ -18,6 +18,7 @@ ln -sf `pwd`/xmodmap/xmodmap-esc ~/.xmodmap-esc
 
 # tmux
 ln -sf `pwd`/tmux/tmux.conf ~/.tmux.conf
+ln -sf `pwd`/tmux/teamocil ~/.teamocil
 
 # synergy
 ln -sf `pwd`/synergy/synergy.conf ~/.synergy.conf

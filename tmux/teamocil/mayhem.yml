@@ -1,0 +1,15 @@
+session:
+  name: "mayhem"
+  windows:
+    - name: "rails"
+      root: "~/ruby/mayhem"
+      panes:
+        - cmd: "bundle exec rails s"
+    - name: "irssi"
+      root: "~"
+      panes:
+        - cmd: "irssi"
+          width: 80
+          focus: true
+        - cmd: "cat ~/.irssi/nicklistfifo"
+          width: 20
