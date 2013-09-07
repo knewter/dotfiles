@@ -39,7 +39,9 @@ alias gum="cd ~/javascript/gumshoe/frontend"
 alias tru="cd ~/rails/trucoin_rails"
 alias may="cd ~/ruby/mayhem"
 alias sips="cd ~/Dropbox/ElixirSips"
+alias chromechat="cd ~/erlang/chromechat"
 alias expertvpn="sudo pon EXPeRT"
+alias xcast="cd /home/jadams/ruby/Xcast/ && ./Xcast -d ~/screencasts -p --wait -n "
 
 ######################################
 # Misc Stuff

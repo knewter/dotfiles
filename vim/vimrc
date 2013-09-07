@@ -235,7 +235,7 @@ endfunction
 call MapCR()
 
 " Ack bits
-map <leader>a :Ack! -ai
+map <leader>a :Ack! -ai 
 
 " vimwiki config
 nmap <Leader>wf <Plug>VimwikiFollowLink
