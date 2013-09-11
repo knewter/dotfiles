@@ -45,12 +45,10 @@ Bundle 'guns/vim-clojure-static'
 Bundle 'sudar/vim-arduino-syntax'
 Bundle 'bling/vim-airline'
 Bundle 'roman/golden-ratio'
+Bundle 'suan/vim-instant-markdown'
 
 let g:airline_theme='luna'
 let g:airline_powerline_fonts=1
-
-let g:vimwiki_use_mouse=0
-Bundle 'vim-scripts/vimwiki'
 
 let g:vroom_map_keys=0
 let g:vroom_use_colors=1
@@ -237,9 +235,6 @@ call MapCR()
 
 " Ack bits
 map <leader>a :Ack! -ai 
-
-" vimwiki config
-nmap <Leader>wf <Plug>VimwikiFollowLink
 
 " Remove highlights
 nmap <Leader><CR> :nohlsearch<cr>
