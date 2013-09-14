@@ -1,0 +1,11 @@
+session:
+  name: "etudes"
+  windows:
+    - name: "bash"
+      root: "~/erlang/etudes"
+      panes:
+        - cmd: "ls"
+    - name: "vim"
+      root: "~/erlang/etudes"
+      panes:
+        - cmd: "vim ."
