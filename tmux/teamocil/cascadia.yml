@@ -1,0 +1,24 @@
+session:
+  name: "cascadia"
+  windows:
+    - name: "sphero"
+      clear: true
+      root: ~/ruby/rubotnik/cascadiaruby/artoo_sphero
+      layout: even-horizontal
+      panes:
+        - cmd: "ls -la; echo ''; echo \"'be ruby sphero.rb'\""
+        - cmd: "view ~/ruby/rubotnik/cascadiaruby/README.markdown"
+    - name: "ardrone"
+      clear: true
+      root: ~/ruby/rubotnik/cascadiaruby/argus_parrot
+      layout: even-horizontal
+      panes:
+        - cmd: "ls -la; echo ''; echo \"'be ruby test.rb'\""
+        - cmd: "view ~/ruby/rubotnik/cascadiaruby/README.markdown"
+    - name: "raspi_tank"
+      clear: true
+      root: ~/ruby/rubotnik/cascadiaruby
+      layout: even-horizontal
+      panes:
+        - cmd: "echo ''; view raspi_tank_notes.markdown"
+        - cmd: "ls -la"

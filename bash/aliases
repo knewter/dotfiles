@@ -44,6 +44,7 @@ alias xcast="cd /home/jadams/ruby/Xcast/ && ./Xcast -d ~/screencasts -p --wait -
 alias chromechat="tmux new-session 'rvm use ruby-2.0.0@system; teamocil chromechat'"
 alias erlang_school="tmux new-session 'rvm use ruby-2.0.0@system; teamocil erlang'"
 alias etudes="tmux new-session 'rvm use ruby-2.0.0@system; teamocil etudes'"
+alias cascadia="tmux new-session 'rvm use ruby-2.0.0@system; teamocil cascadia'"
 
 ######################################
 # Misc Stuff
@@ -57,3 +58,5 @@ alias go='gnome-open'
 alias isotope='ssh isotope11.selfip.com'
 alias synserver='synergys -c ~/.synergy.conf'
 alias synclient='synergyc -n chromebook 192.168.1.136'
+alias erl='rlwrap -a erl' # give erl readline support
+alias iex='rlwrap -a iex' # give iex readline support

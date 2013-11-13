@@ -4,8 +4,12 @@ session:
     - name: "server"
       root: "~/erlang/chromechat"
       panes:
-        - cmd: "./start.sh"
+        - cmd: "./bin/chromechat/start"
     - name: "vim"
       root: "~/erlang/chromechat"
       panes:
         - cmd: "vim ."
+    - name: "tests"
+      root: "~/erlang/chromechat"
+      panes:
+        - cmd: "make test"
