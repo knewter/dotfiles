@@ -45,6 +45,7 @@ alias chromechat="tmux new-session 'rvm use ruby-2.0.0@system; teamocil chromech
 alias erlang_school="tmux new-session 'rvm use ruby-2.0.0@system; teamocil erlang'"
 alias etudes="tmux new-session 'rvm use ruby-2.0.0@system; teamocil etudes'"
 alias cascadia="tmux new-session 'rvm use ruby-2.0.0@system; teamocil cascadia'"
+alias uspto="tmux new-session 'rvm use ruby-2.0.0@system; teamocil uspto'"
 
 ######################################
 # Misc Stuff
