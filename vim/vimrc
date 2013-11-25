@@ -281,3 +281,8 @@ map <C-Space> :GoldenRatioResize<CR>
 set splitbelow
 map <C-N> :vsp .<CR>
 map <C-C> :q<CR>
+
+"""""""""""""""""""
+" ctrlp settings
+"""""""""""""""""""
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'

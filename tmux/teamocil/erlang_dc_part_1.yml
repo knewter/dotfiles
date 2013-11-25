@@ -1,0 +1,30 @@
+session:
+  name: "erlang_dc_part_1"
+  windows:
+    - name: "basic_elixir"
+      clear: true
+      root: ~/elixir/erlang_dc_workshop
+      panes:
+        - cmd: "cd deck/introduction_to_elixir/basic_elixir; vimdeck basic_elixir.md"
+          focus: true
+          width: 80
+        - cmd: "iex"
+          width: 20
+    - name: "testing"
+      clear: true
+      root: ~/elixir/erlang_dc_workshop
+      panes:
+        - cmd: "cd deck/introduction_to_elixir/testing; vimdeck testing.md"
+          focus: true
+          width: 80
+        - cmd: "iex"
+          width: 20
+    - name: "slightly_less_basic"
+      clear: true
+      root: ~/elixir/erlang_dc_workshop
+      panes:
+        - cmd: "cd deck/introduction_to_elixir/slightly_less_basic; vimdeck slightly_less_basic.md"
+          focus: true
+          width: 80
+        - cmd: "iex"
+          width: 20
