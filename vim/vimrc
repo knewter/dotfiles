@@ -2,6 +2,8 @@ set nocompatible
 filetype plugin indent on
 syntax on
 
+set nowrap
+
 """""""""""""""""""""""""""""""""""""""
 " VUNDLE BITS
 """""""""""""""""""""""""""""""""""""""
@@ -24,7 +26,6 @@ Bundle 'ervandew/supertab'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'guns/vim-clojure-static'
 Bundle 'int3/vim-extradite'
-Bundle 'jtratner/vim-flavored-markdown'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
 Bundle 'kikijump/tslime.vim'
@@ -37,7 +38,6 @@ Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-classpath'
 Bundle 'tpope/vim-fireplace'
 Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-surround'
@@ -48,6 +48,10 @@ Bundle 'wavded/vim-stylus'
 
 let g:airline_theme='luna'
 let g:airline_powerline_fonts=1
+
+let g:markdown_fenced_languages=['ruby', 'javascript', 'elixir', 'clojure']
+Bundle 'tpope/vim-markdown'
+Bundle 'jtratner/vim-flavored-markdown'
 
 let g:vroom_map_keys=0
 let g:vroom_use_colors=1
@@ -143,14 +147,14 @@ set mouse=""
 " Theme...
 set t_Co=256
 set background=dark
-colorscheme Tomorrow-Night-Eighties
+"colorscheme Tomorrow-Night-Eighties
 "colorscheme base16-default
 "colorscheme grb256
 "colorscheme mustang
 "colorscheme xoria256
 "colorscheme wombat256
 "colorscheme zenburn
-"colorscheme molokai
+colorscheme molokai
 "colorscheme base16-eighties
 
 " highlight the current line
@@ -173,10 +177,8 @@ set ruler
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
 
-" Support github flavored markdown automatically
 augroup markdown
   au!
-  au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
   au BufReadPost *.md,*.markdown setlocal tw=80
 augroup END
 
@@ -234,7 +236,7 @@ endfunction
 call MapCR()
 
 " Ack bits
-map <leader>a :Ack! -ai 
+map <leader>a :Ack! -ai
 
 " Remove highlights
 nmap <Leader><CR> :nohlsearch<cr>

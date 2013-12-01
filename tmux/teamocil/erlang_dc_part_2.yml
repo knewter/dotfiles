@@ -1,0 +1,13 @@
+session:
+  name: "erlang_dc_part_2"
+  windows:
+    - name: "servers"
+      clear: true
+      root: ~/elixir/erlang_dc_workshop/deck/otp_with_elixir/servers
+      panes:
+        - cmd: "vimdeck servers.md"
+    - name: "servers project"
+      clear: true
+      root: ~/elixir/erlang_dc_workshop/deck/otp_with_elixir/servers/fridge_server
+      panes:
+        - cmd: "tree"

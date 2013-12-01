@@ -47,6 +47,7 @@ alias etudes="tmux new-session 'rvm use ruby-2.0.0@system; teamocil etudes'"
 alias cascadia="tmux new-session 'rvm use ruby-2.0.0@system; teamocil cascadia'"
 alias uspto="tmux new-session 'rvm use ruby-2.0.0@system; teamocil uspto'"
 alias erlang_dc_part_1="tmux new-session 'rvm use ruby-2.0.0@system; teamocil erlang_dc_part_1'"
+alias erlang_dc_part_2="tmux new-session 'rvm use ruby-2.0.0@system; teamocil erlang_dc_part_2'"
 
 ######################################
 # Misc Stuff
