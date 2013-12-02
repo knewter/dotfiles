@@ -50,7 +50,7 @@ Bundle 'wavded/vim-stylus'
 let g:airline_theme='luna'
 let g:airline_powerline_fonts=1
 
-let g:markdown_fenced_languages=['ruby', 'javascript', 'elixir', 'clojure']
+let g:markdown_fenced_languages=['ruby', 'javascript', 'elixir', 'clojure', 'sh']
 Bundle 'tpope/vim-markdown'
 Bundle 'jtratner/vim-flavored-markdown'
 
@@ -183,6 +183,7 @@ set ruler
 augroup markdown
   au!
   au BufReadPost *.md,*.markdown setlocal tw=80
+  au BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
 augroup END
 
 augroup erlang

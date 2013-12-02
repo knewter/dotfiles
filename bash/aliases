@@ -63,3 +63,4 @@ alias synserver='synergys -c ~/.synergy.conf'
 alias synclient='synergyc -n chromebook 192.168.1.136'
 alias erl='rlwrap -a erl' # give erl readline support
 alias iex='rlwrap -a iex' # give iex readline support
+alias servedir='ruby -run -e httpd . -p 9091' # serve current dir files on port 9091
