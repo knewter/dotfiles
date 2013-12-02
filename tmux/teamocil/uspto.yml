@@ -10,6 +10,10 @@ session:
       root: "~/projects/uspto/USPTO_dir_api"
       panes:
         - cmd: "ls"
+    - name: "frontend utils"
+      root: "~/projects/uspto/USPTO_dir_frontend"
+      panes:
+        - cmd: "grunt watch"
     - name: "frontend"
       root: "~/projects/uspto/USPTO_dir_frontend"
       panes:

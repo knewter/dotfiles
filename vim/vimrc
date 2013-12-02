@@ -24,6 +24,7 @@ Bundle 'dandorman/vim-colors'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'ervandew/supertab'
 Bundle 'flazz/vim-colorschemes'
+Bundle 'groenewege/vim-less'
 Bundle 'guns/vim-clojure-static'
 Bundle 'int3/vim-extradite'
 Bundle 'kchmck/vim-coffee-script'
@@ -146,7 +147,9 @@ set mouse=""
 
 " Theme...
 set t_Co=256
+"set t_Co=16
 set background=dark
+"colorscheme solarized
 "colorscheme Tomorrow-Night-Eighties
 "colorscheme base16-default
 "colorscheme grb256
@@ -219,6 +222,9 @@ augroup vimrcEx
   " ftdetect for Arduino
   au BufRead,BufNewFile *.pde set filetype=arduino
   au BufRead,BufNewFile *.ino set filetype=arduino
+
+  " ftdetect for less
+  au BufRead,BufNewFile *.less set filetype=less
 augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
