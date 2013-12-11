@@ -46,6 +46,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/SyntaxRange'
 Bundle 'walm/jshint.vim'
 Bundle 'wavded/vim-stylus'
+Bundle 'rodjek/vim-puppet'
 
 let g:airline_theme='luna'
 let g:airline_powerline_fonts=1
@@ -184,6 +185,11 @@ augroup markdown
   au!
   au BufReadPost *.md,*.markdown setlocal tw=80
   au BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
+augroup END
+
+augroup puppet
+  au!
+  au BufNewFile,BufRead *.pp setlocal filetype=puppet
 augroup END
 
 augroup erlang
