@@ -47,6 +47,7 @@ Bundle 'vim-scripts/SyntaxRange'
 Bundle 'walm/jshint.vim'
 Bundle 'wavded/vim-stylus'
 Bundle 'rodjek/vim-puppet'
+Bundle 'tpope/vim-vinegar'
 
 let g:airline_theme='luna'
 let g:airline_powerline_fonts=1
