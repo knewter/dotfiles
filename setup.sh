@@ -10,6 +10,7 @@ ln -sf `pwd`/vim/ftplugin/erlang.vim ~/.vim/ftplugin/erlang.vim
 mkdir -p ~/.bash_files
 ln -sf `pwd`/bash/aliases ~/.bash_files/aliases
 ln -sf `pwd`/bash/prompts ~/.bash_files/prompts
+ln -sf `pwd`/bash/kerl.bash ~/.bash_files/kerl.bash
 
 # ack
 ln -sf `pwd`/ack/ackrc ~/.ackrc

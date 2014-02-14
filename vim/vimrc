@@ -46,6 +46,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/SyntaxRange'
 Bundle 'walm/jshint.vim'
 Bundle 'wavded/vim-stylus'
+Bundle 'groenewege/vim-less'
 
 let g:airline_theme='luna'
 let g:airline_powerline_fonts=1
@@ -191,6 +192,7 @@ augroup erlang
   au BufNewFile,BufRead *.erl setlocal tabstop=4
   au BufNewFile,BufRead *.erl setlocal shiftwidth=4
   au BufNewFile,BufRead *.erl setlocal softtabstop=4
+  au BufNewFile,BufRead relx.config setlocal filetype=erlang
 augroup END
 
 augroup elixir
