@@ -28,3 +28,4 @@ ln -sf `pwd`/synergy/synergy.conf ~/.synergy.conf
 # bins
 ln -sf `pwd`/bin/tspace ~/bin/tspace
 ln -sf `pwd`/bin/list-terminal-colors ~/bin/list-terminal-colors
+ln -sf `pwd`/bin/subcount ~/bin/subcount

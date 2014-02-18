@@ -48,11 +48,12 @@ Bundle 'walm/jshint.vim'
 Bundle 'wavded/vim-stylus'
 Bundle 'rodjek/vim-puppet'
 Bundle 'tpope/vim-vinegar'
+Bundle 'rking/ag.vim'
 
 let g:airline_theme='luna'
 let g:airline_powerline_fonts=1
 
-let g:markdown_fenced_languages=['ruby', 'javascript', 'elixir', 'clojure', 'sh', 'html']
+let g:markdown_fenced_languages=['ruby', 'javascript', 'elixir', 'clojure', 'sh', 'html', 'sass', 'scss']
 Bundle 'tpope/vim-markdown'
 Bundle 'jtratner/vim-flavored-markdown'
 
@@ -255,7 +256,7 @@ endfunction
 call MapCR()
 
 " Ack bits
-map <leader>a :Ack! -ai
+map <leader>a :Ag 
 
 " Remove highlights
 nmap <Leader><CR> :nohlsearch<cr>
@@ -289,15 +290,6 @@ set secure " disable unsafe commands in local .vimrc files
 " Start scrolling 3 lines before the border
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set scrolloff=3
-
-"""""""""""""""""""""""""""""
-" Easier split navigation
-"""""""""""""""""""""""""""""
-map <C-J> <C-W>j<C-W>_:GoldenRatioResize<CR>
-map <C-K> <C-W>k<C-W>_:GoldenRatioResize<CR>
-map <C-H> <C-W>h<C-W>_:GoldenRatioResize<CR>
-map <C-L> <C-W>l<C-W>_:GoldenRatioResize<CR>
-map <C-Space> :GoldenRatioResize<CR>
 
 """"""""""""""""""""""""""""""""""""""""""
 " Custom split opening / closing behaviour
