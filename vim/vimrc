@@ -46,6 +46,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/SyntaxRange'
 Bundle 'walm/jshint.vim'
 Bundle 'wavded/vim-stylus'
+Bundle 'groenewege/vim-less'
 Bundle 'rodjek/vim-puppet'
 Bundle 'tpope/vim-vinegar'
 Bundle 'rking/ag.vim'
@@ -199,6 +200,7 @@ augroup erlang
   au BufNewFile,BufRead *.erl setlocal tabstop=4
   au BufNewFile,BufRead *.erl setlocal shiftwidth=4
   au BufNewFile,BufRead *.erl setlocal softtabstop=4
+  au BufNewFile,BufRead relx.config setlocal filetype=erlang
 augroup END
 
 augroup elixir
