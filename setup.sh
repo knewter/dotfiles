@@ -7,6 +7,11 @@ ln -sf `pwd`/vim/ftplugin/ruby.vim ~/.vim/ftplugin/ruby.vim
 ln -sf `pwd`/vim/ftplugin/erlang.vim ~/.vim/ftplugin/erlang.vim
 
 # bash
+## prepare liquidprompt
+cd
+git clone https://github.com/nojhan/liquidprompt.git
+source liquidprompt/liquidprompt
+## prepare the rest of the bash files
 mkdir -p ~/.bash_files
 ln -sf `pwd`/bash/bashrc ~/.bashrc
 ln -sf `pwd`/bash/aliases ~/.bash_files/aliases
