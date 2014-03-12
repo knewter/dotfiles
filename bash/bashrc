@@ -101,3 +101,7 @@ export RUBYOPT="rubygems"
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
+
+. ~/erlang/erlangs/r17rc1/activate 
+
+eval "$(direnv hook bash)"

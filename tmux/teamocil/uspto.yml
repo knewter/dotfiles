@@ -4,7 +4,7 @@ session:
     - name: "servers"
       root: "~/projects/uspto/"
       panes:
-        - cmd: "cd dir_search/solr; ./localsolr.sh run"
+        - cmd: "cd USPTO_solr; ./localsolr.sh run"
         - cmd: "cd jboss-5.1.0.GA; ./bin/run.sh"
     - name: "api"
       root: "~/projects/uspto/USPTO_dir_api"

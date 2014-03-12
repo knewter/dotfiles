@@ -5,67 +5,6 @@ syntax on
 set nowrap
 
 """""""""""""""""""""""""""""""""""""""
-" VUNDLE BITS
-"""""""""""""""""""""""""""""""""""""""
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
-
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'alunny/pegjs-vim'
-Bundle 'bling/vim-airline'
-Bundle 'chriskempson/base16-vim'
-Bundle 'chriskempson/tomorrow-theme'
-Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'dandorman/vim-colors'
-Bundle 'elixir-lang/vim-elixir'
-Bundle 'ervandew/supertab'
-Bundle 'flazz/vim-colorschemes'
-Bundle 'groenewege/vim-less'
-Bundle 'guns/vim-clojure-static'
-Bundle 'int3/vim-extradite'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'kien/ctrlp.vim'
-Bundle 'kikijump/tslime.vim'
-Bundle 'leafgarland/typescript-vim'
-Bundle 'mileszs/ack.vim'
-Bundle 'slim-template/vim-slim'
-Bundle 'sudar/vim-arduino-syntax'
-Bundle 'tomasr/molokai'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-classpath'
-Bundle 'tpope/vim-fireplace'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-rake'
-Bundle 'tpope/vim-surround'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'vim-scripts/SyntaxRange'
-Bundle 'walm/jshint.vim'
-Bundle 'wavded/vim-stylus'
-Bundle 'groenewege/vim-less'
-Bundle 'rodjek/vim-puppet'
-Bundle 'tpope/vim-vinegar'
-Bundle 'rking/ag.vim'
-
-let g:airline_theme='luna'
-let g:airline_powerline_fonts=1
-
-let g:markdown_fenced_languages=['ruby', 'javascript', 'elixir', 'clojure', 'sh', 'html', 'sass', 'scss', 'haml']
-Bundle 'tpope/vim-markdown'
-Bundle 'jtratner/vim-flavored-markdown'
-
-let g:vroom_map_keys=0
-let g:vroom_use_colors=1
-Bundle 'skalnik/vim-vroom'
-
-let g:molokai_original=1
-let g:rehash256=1
-
-"""""""""""""""""""""""""""""""""""""""
 " BACKUP / TMP FILES
 """""""""""""""""""""""""""""""""""""""
 " taken from
@@ -148,6 +87,66 @@ set laststatus=2
 set guioptions="agimrLt"
 " Turn off mouse click in gui
 set mouse=""
+
+"""""""""""""""""""""""""""""""""""""""
+" VUNDLE BITS
+"""""""""""""""""""""""""""""""""""""""
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'alunny/pegjs-vim'
+Bundle 'bling/vim-airline'
+Bundle 'chriskempson/base16-vim'
+Bundle 'chriskempson/tomorrow-theme'
+Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'dandorman/vim-colors'
+Bundle 'elixir-lang/vim-elixir'
+Bundle 'ervandew/supertab'
+Bundle 'flazz/vim-colorschemes'
+Bundle 'groenewege/vim-less'
+Bundle 'guns/vim-clojure-static'
+Bundle 'int3/vim-extradite'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'kien/ctrlp.vim'
+Bundle 'kikijump/tslime.vim'
+Bundle 'leafgarland/typescript-vim'
+Bundle 'mileszs/ack.vim'
+Bundle 'slim-template/vim-slim'
+Bundle 'sudar/vim-arduino-syntax'
+Bundle 'tomasr/molokai'
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-classpath'
+Bundle 'tpope/vim-fireplace'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-rake'
+Bundle 'tpope/vim-surround'
+Bundle 'walm/jshint.vim'
+Bundle 'wavded/vim-stylus'
+Bundle 'groenewege/vim-less'
+Bundle 'rodjek/vim-puppet'
+Bundle 'tpope/vim-vinegar'
+Bundle 'rking/ag.vim'
+Bundle 'vim-scripts/SyntaxRange'
+
+let g:airline_theme='luna'
+let g:airline_powerline_fonts=1
+
+let g:markdown_fenced_languages=['ruby', 'javascript', 'elixir', 'clojure', 'sh', 'html', 'sass', 'scss', 'haml']
+Bundle 'tpope/vim-markdown'
+Bundle 'jtratner/vim-flavored-markdown'
+
+let g:vroom_map_keys=0
+let g:vroom_use_colors=1
+Bundle 'skalnik/vim-vroom'
+
+let g:molokai_original=1
+let g:rehash256=1
 
 " Theme...
 set t_Co=256
