@@ -1,6 +1,6 @@
 set nocompatible
-filetype plugin indent on
 syntax on
+"filetype plugin indent on
 
 set nowrap
 
@@ -124,7 +124,6 @@ Bundle 'tpope/vim-classpath'
 Bundle 'tpope/vim-fireplace'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-surround'
 Bundle 'walm/jshint.vim'
 Bundle 'wavded/vim-stylus'
