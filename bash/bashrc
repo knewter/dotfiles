@@ -19,8 +19,11 @@ export AUTOFEATURE=true
 # Titanium Developer
 export TIPATH=~/.titanium
 
+export ANDROID_HOME=~/software/android/android-studio/sdk
+
 export PATH=$PATH:$ANDROID_TOOLS
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:~/software/gradle-1.12/bin
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -99,4 +102,9 @@ export RUBYOPT="rubygems"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
+. ~/erlang/erlangs/17.0/activate
+
 #xmodmap ~/.xmodmap-esc
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

@@ -46,15 +46,17 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/SyntaxRange'
 Bundle 'walm/jshint.vim'
 Bundle 'wavded/vim-stylus'
-Bundle 'groenewege/vim-less'
 Bundle 'rodjek/vim-puppet'
 Bundle 'tpope/vim-vinegar'
 Bundle 'rking/ag.vim'
+Bundle 'zweifisch/pipe2eval'
+Bundle 'leshill/vim-json'
+Bundle 'mustache/vim-mustache-handlebars'
 
 let g:airline_theme='luna'
 let g:airline_powerline_fonts=1
 
-let g:markdown_fenced_languages=['ruby', 'javascript', 'elixir', 'clojure', 'sh', 'html', 'sass', 'scss']
+let g:markdown_fenced_languages=['ruby', 'javascript', 'elixir', 'clojure', 'sh', 'html', 'sass', 'scss', 'json']
 Bundle 'tpope/vim-markdown'
 Bundle 'jtratner/vim-flavored-markdown'
 

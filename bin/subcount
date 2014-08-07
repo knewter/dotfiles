@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd ~/elixir/dpd_active_subscriber_counter
-mix run ./bin/get_subscribers_count_from_client
+mix run ./bin/get_subscribers_count_from_client.exs
