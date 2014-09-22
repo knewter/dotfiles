@@ -5,6 +5,10 @@ git config --global user.email "josh.rubyist@gmail.com"
 git config --global user.name "Josh Adams"
 
 # vim
+## Setup Pathogen
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
 ln -sf `pwd`/vim/vimrc ~/.vimrc
 mkdir -p ~/.vim/ftplugin
 ln -sf `pwd`/vim/ftplugin/ruby.vim ~/.vim/ftplugin/ruby.vim
