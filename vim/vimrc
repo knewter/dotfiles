@@ -91,58 +91,57 @@ set mouse=""
 """""""""""""""""""""""""""""""""""""""
 " VUNDLE BITS
 """""""""""""""""""""""""""""""""""""""
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'alunny/pegjs-vim'
-Bundle 'bling/vim-airline'
-Bundle 'chriskempson/base16-vim'
-Bundle 'chriskempson/tomorrow-theme'
-Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'dandorman/vim-colors'
-Bundle 'elixir-lang/vim-elixir'
-Bundle 'ervandew/supertab'
-Bundle 'flazz/vim-colorschemes'
-Bundle 'groenewege/vim-less'
-Bundle 'guns/vim-clojure-static'
-Bundle 'int3/vim-extradite'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'kien/ctrlp.vim'
-Bundle 'kikijump/tslime.vim'
-Bundle 'leafgarland/typescript-vim'
-Bundle 'mileszs/ack.vim'
-Bundle 'slim-template/vim-slim'
-Bundle 'sudar/vim-arduino-syntax'
-Bundle 'tomasr/molokai'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-classpath'
-Bundle 'tpope/vim-fireplace'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-surround'
-Bundle 'walm/jshint.vim'
-Bundle 'wavded/vim-stylus'
-Bundle 'groenewege/vim-less'
-Bundle 'rodjek/vim-puppet'
-Bundle 'tpope/vim-vinegar'
-Bundle 'rking/ag.vim'
-Bundle 'vim-scripts/SyntaxRange'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'alunny/pegjs-vim'
+Plugin 'bling/vim-airline'
+Plugin 'chriskempson/base16-vim'
+Plugin 'chriskempson/tomorrow-theme'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'dandorman/vim-colors'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'ervandew/supertab'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'groenewege/vim-less'
+Plugin 'guns/vim-clojure-static'
+Plugin 'int3/vim-extradite'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'kien/ctrlp.vim'
+Plugin 'kikijump/tslime.vim'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'slim-template/vim-slim'
+Plugin 'sudar/vim-arduino-syntax'
+Plugin 'tomasr/molokai'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-classpath'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-surround'
+Plugin 'walm/jshint.vim'
+Plugin 'wavded/vim-stylus'
+Plugin 'rodjek/vim-puppet'
+Plugin 'tpope/vim-vinegar'
+Plugin 'rking/ag.vim'
+Plugin 'vim-scripts/SyntaxRange'
 
 let g:airline_theme='luna'
 let g:airline_powerline_fonts=1
 
 let g:markdown_fenced_languages=['ruby', 'javascript', 'elixir', 'clojure', 'sh', 'html', 'sass', 'scss', 'haml']
-Bundle 'tpope/vim-markdown'
-Bundle 'jtratner/vim-flavored-markdown'
+Plugin 'tpope/vim-markdown'
+Plugin 'jtratner/vim-flavored-markdown'
 
 let g:vroom_map_keys=0
 let g:vroom_use_colors=1
-Bundle 'skalnik/vim-vroom'
+Plugin 'skalnik/vim-vroom'
 
 let g:molokai_original=1
 let g:rehash256=1
