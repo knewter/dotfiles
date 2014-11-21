@@ -163,8 +163,6 @@ set t_ut= " improve screen clearing by using the background color
 set background=dark
 syntax enable
 colorscheme molokai
-syntax on
-
 set enc=utf-8
 set term=screen-256color
 let $TERM='screen-256color'
@@ -246,77 +244,6 @@ nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
 
 """ Vim environment handling tweaks ====
 """"" BACKUP / TMP FILES
-" taken from
-" http://stackoverflow.com/questions/4331776/change-vim-swap-backup-undo-file-name
-" Save your backups to a less annoying place than the current directory.
-" If you have .vim-backup in the current directory, it'll use that.
-" Otherwise it saves it to ~/.vim/backup or . if all else fails.
-if isdirectory($HOME . '/.vim/backup') == 0
-  :silent !mkdir -p ~/.vim/backup >/dev/null 2>&1
-endif
-set backupdir-=.
-set backupdir+=.
-set backupdir-=~/
-set backupdir^=~/.vim/backup/
-set backupdir^=./.vim-backup/
-set backup
-
-" Save your swp files to a less annoying place than the current directory.
-" If you have .vim-swap in the current directory, it'll use that.
-" Otherwise it saves it to ~/.vim/swap, ~/tmp or .
-if isdirectory($HOME . '/.vim/swap') == 0
-  :silent !mkdir -p ~/.vim/swap >/dev/null 2>&1
-endif
-set directory=./.vim-swap//
-set directory+=~/.vim/swap//
-set directory+=~/tmp//
-set directory+=.
-
-" viminfo stores the the state of your previous editing session
-set viminfo+=n~/.vim/viminfo
-
-" undofile - This allows you to use undos after exiting and restarting
-if exists("+undofile")
-  " This, like swap and backups, uses .vim-undo first, then ~/.vim/undo
-  " :help undo-persistence
-  " This is only present in 7.3+
-  if isdirectory($HOME . '/.vim/undo') == 0
-    :silent !mkdir -p ~/.vim/undo > /dev/null 2>&1
-  endif
-  set undodir=./.vim-undo//
-  set undodir+=~/.vim/undo//
-  set undofile
-endif
-
-" Prevent Vim from clobbering the scrollback buffer. See
-" http://www.shallowsky.com/linux/noaltscreen.html
-set t_ti= t_te=
-
-" Set encoding
-set encoding=utf-8
-
-" display incomplete commands
-set showcmd
-
-" Searching
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-
-" Whitespace stuff
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
-
-" Tab completion
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
-
-" Enable per-project vimrcs
-set exrc   " enable per-directory .vimrc files
-set secure " disable unsafe commands in local .vimrc files
 
 " Start scrolling 3 lines before the border
 set scrolloff=3

@@ -1,0 +1,17 @@
+session:
+  name: "erlang factory sf 2014"
+  windows:
+    - name: "sphero"
+      clear: true
+      root: ~/elixir/sphero
+      layout: even-horizontal
+      panes:
+        - cmd: ". ~/erlang/erlangs/r17rc1/activate; ls -la; echo '----------------------'; echo 'First, connect the sphero via bluetooth/serial'; echo 'mix run examples/square.exs'"
+        - cmd: "view ~/erlang/erlang_factory_robots/elixir/sphero/README.md"
+    - name: "exdrone"
+      clear: true
+      root: ~/elixir/exdrone
+      layout: even-horizontal
+      panes:
+        - cmd: ". ~/erlang/erlangs/r17rc1/activate; ls -la; echo '----------------------'; echo 'First, connect to the AR Drone wifi'; echo 'mix run examples/basic.ex'"
+        - cmd: "view ~/erlang/erlang_factory_robots/elixir/exdrone/README.md"

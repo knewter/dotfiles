@@ -1,13 +1,28 @@
 #!/bin/bash
 
+# git
+git config --global user.email "josh.rubyist@gmail.com"
+git config --global user.name "Josh Adams"
+
 # vim
+## Setup Pathogen
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
 ln -sf `pwd`/vim/vimrc ~/.vimrc
 mkdir -p ~/.vim/ftplugin
 ln -sf `pwd`/vim/ftplugin/ruby.vim ~/.vim/ftplugin/ruby.vim
 ln -sf `pwd`/vim/ftplugin/erlang.vim ~/.vim/ftplugin/erlang.vim
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # bash
+## prepare liquidprompt
+pushd ~
+git clone https://github.com/nojhan/liquidprompt.git
+source liquidprompt/liquidprompt
+## prepare the rest of the bash files
 mkdir -p ~/.bash_files
+popd
 ln -sf `pwd`/bash/bashrc ~/.bashrc
 ln -sf `pwd`/bash/aliases ~/.bash_files/aliases
 ln -sf `pwd`/bash/prompts ~/.bash_files/prompts

@@ -89,10 +89,11 @@ if [ -f ~/.bash_files/aliases ]; then
   . ~/.bash_files/aliases
 fi
 
-if [ -f ~/.bash_files/prompts/elite ]; then
-  . ~/.bash_files/prompts/elite
-  elite
-fi
+source ~/liquidprompt/liquidprompt
+#if [ -f ~/.bash_files/prompts/elite ]; then
+  #. ~/.bash_files/prompts/elite
+  #elite
+#fi
 #export PS1='C:${PWD//\//\\\}>'
 
 export RUBYOPT="rubygems"
@@ -102,9 +103,12 @@ export RUBYOPT="rubygems"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-. ~/erlang/erlangs/17.0/activate
-
 #xmodmap ~/.xmodmap-esc
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
+
+. ~/erlang/erlangs/r17rc1/activate
+
+eval "$(direnv hook bash)"
