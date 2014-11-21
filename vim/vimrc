@@ -52,8 +52,8 @@ Plugin 'tpope/vim-haml'
 """"""" Markdown
 " Markdown is now included in vim, but by default .md is read as Modula-2
 " files.  This fixes that, because I don't ever edit Modula-2 files :)
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-autocmd BufNewFile,BufReadPost *.markdown set filetype=markdown
+autocmd BufNewFile,BufReadPost *.md,*.markdown set filetype=markdown
+autocmd FileType markdown set tw=80
 
 """"" End Filetypes ====================
 
