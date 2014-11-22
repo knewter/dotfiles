@@ -69,6 +69,8 @@ Plugin 'skalnik/vim-vroom'    " Run tests with <leader>t
   silent! map <unique> <Leader>t :VroomRunTestFile<CR>
   silent! map <unique> <Leader>T :VroomRunNearestTest<CR>
   silent! map <unique> <Leader>l :VroomRunLastTest<CR>
+
+Plugin 'christoomey/vim-tmux-navigator'  " Navigate between tmux panes and vim splits seamlessly
 """"" End Utilities ====================
 
 """"" UI Plugins =======================
@@ -244,6 +246,9 @@ nnoremap J mzJ`z
 " Split line (sister to [J]oin lines above)
 " The normal use of S is covered by cc, so don't worry about shadowing it.
 nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
+
+" Open the alternate file
+map ,, <C-^>
 
 """ End Keyboard shortcut setup =================
 
