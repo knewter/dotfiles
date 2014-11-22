@@ -55,6 +55,9 @@ Plugin 'tpope/vim-haml'
 autocmd BufNewFile,BufReadPost *.md,*.markdown set filetype=markdown
 autocmd FileType markdown set tw=80
 
+""""""" Ansible
+Plugin 'chase/vim-ansible-yaml'
+
 """"" End Filetypes ====================
 
 """"" Utilities ========================
@@ -167,8 +170,7 @@ set enc=utf-8
 set term=screen-256color
 let $TERM='screen-256color'
 
-" Highlighting line or number follows vvvvv
-"
+" Highlighting line or number follows....
 set cul " highlight current line
 " If you want to just highlight the line number:
 " hi clear CursorLine
@@ -179,6 +181,9 @@ set cul " highlight current line
 " augroup CLNRSet
 "     autocmd! ColorScheme * hi CursorLineNR cterm=bold
 " augroup END
+
+" Highlight current column
+set cuc
 
 " change vim cursor depending on the mode
 if has("unix")

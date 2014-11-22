@@ -105,10 +105,10 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 #xmodmap ~/.xmodmap-esc
 
+source ~/erlang/erlangs/17.0/activate
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
-
-. ~/erlang/erlangs/r17rc1/activate
 
 eval "$(direnv hook bash)"
