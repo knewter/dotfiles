@@ -48,6 +48,8 @@ alias cascadia="tmux new-session 'rvm use ruby-2.0.0-p247@system; teamocil casca
 alias uspto="tmux new-session 'rvm use ruby-2.0.0@system; teamocil uspto'"
 alias erlang_dc_part_1="tmux new-session 'rvm use ruby-2.0.0@system; teamocil erlang_dc_part_1'"
 alias erlang_dc_part_2="tmux new-session 'rvm use ruby-2.0.0@system; teamocil erlang_dc_part_2'"
+alias usfe="cd ~/projects/uspto/frontend/"
+alias jb="cd ~/projects/uspto/jboss-eap-6.1/; ./bin/standalone.sh"
 
 ######################################
 # Misc Stuff

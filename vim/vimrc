@@ -75,6 +75,14 @@ Plugin 'skalnik/vim-vroom'    " Run tests with <leader>t
 Plugin 'christoomey/vim-tmux-navigator'  " Navigate between tmux panes and vim splits seamlessly
 Plugin 'tpope/vim-fugitive'              " git support from dat tpope
 Plugin 'vim-scripts/SyntaxRange' 	 " Allow ranges within a file to define different syntax mappings
+Plugin 'mattn/webapi-vim' 		 " vim interface to web apis.  Required for gist-vim
+Plugin 'mattn/gist-vim'                  " create gists trivially from buffer, selection, etc.
+  let g:gist_open_browser_after_post = 1
+  let g:gist_detect_filetype = 2
+  let g:gist_post_private = 1
+  if has('macunix')
+    let g:gist_clip_command = 'pbcopy'
+  endif
 """"" End Utilities ====================
 
 """"" UI Plugins =======================
@@ -292,5 +300,9 @@ func! DeleteTrailingWS()
 endfunc
 au BufWrite * silent call DeleteTrailingWS()
 """"" End Normalization ================
-
 """ End Auto Commands ==================
+
+""""" GrabBag God Help Me FIXME TODO ETC
+" Enable per-project vimrcs
+set exrc   " enable per-directory .vimrc files
+set secure " disable unsafe commands in local .vimrc files

@@ -1,20 +1,27 @@
-session:
-  name: "uspto"
-  windows:
-    - name: "servers"
-      root: "~/projects/uspto/"
-      panes:
-        - cmd: "cd USPTO_solr; ./localsolr.sh run"
-        - cmd: "cd jboss-eap-6.1; ./bin/standalone.sh"
-    - name: "api"
-      root: "~/projects/uspto/USPTO_dir_api"
-      panes:
-        - cmd: "ls"
-    - name: "frontend utils"
-      root: "~/projects/uspto/USPTO_dir_frontend"
-      panes:
-        - cmd: "grunt watch"
-    - name: "frontend"
-      root: "~/projects/uspto/USPTO_dir_frontend"
-      panes:
-        - cmd: "ls"
+name: "uspto"
+windows:
+  - name: "services"
+    root: "~/projects/uspto"
+    layout: tiled
+    panes:
+      - commands:
+        - cowsay "Starting SolrCloud"
+        - cd ~/projects/uspto/solr
+        - ./scripts/start-local-solrcloud.sh 2
+        - cowsay "Populating Cassandra"
+        - cd ~/projects/uspto/ingester
+        - ./setup_cassandra.sh
+        - ln -sfv ~/projects/uspto/banana ~/projects/uspto/solr/solrcloud-working-dir/example/solr-webapp/webapp
+        - cowsay "Starting JBoss"
+        - cd ~/projects/uspto
+        - rm ~/projects/uspto/jboss-eap-6.1/standalone/deployments/dirsearch.war
+        - cp ~/projects/uspto/USPTO_dir_api/target/dirsearch.war ~/projects/uspto/jboss-eap-6.1/standalone/deployments/
+        - jb
+      - commands:
+        - usfe
+        - ./node_modules/.bin/grunt watch
+      - cd ~/projects/uspto
+  - name: "code"
+    root: "~/projects/uspto"
+    panes:
+      - usfe
