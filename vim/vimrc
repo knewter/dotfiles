@@ -11,6 +11,7 @@
 " 6) Auto Commands
 "   6.1) Filetypes
 "   6.1) Normalization
+" 7) Project-Specific items
 
 """ Setup Vundle =======================
 set nocompatible " required for Vundle
@@ -302,7 +303,8 @@ au BufWrite * silent call DeleteTrailingWS()
 """"" End Normalization ================
 """ End Auto Commands ==================
 
-""""" GrabBag God Help Me FIXME TODO ETC
+""" Project-Specific Items =============
 " Enable per-project vimrcs
 set exrc   " enable per-directory .vimrc files
 set secure " disable unsafe commands in local .vimrc files
+""" End Project-Specific Items =========

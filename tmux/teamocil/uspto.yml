@@ -15,7 +15,6 @@ windows:
         - cowsay "Starting JBoss"
         - cd ~/projects/uspto
         - rm ~/projects/uspto/jboss-eap-6.1/standalone/deployments/dirsearch.war
-        - cp ~/projects/uspto/USPTO_dir_api/target/dirsearch.war ~/projects/uspto/jboss-eap-6.1/standalone/deployments/
         - jb
       - commands:
         - usfe
