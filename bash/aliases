@@ -25,6 +25,7 @@ alias gcom='git checkout master'
 alias gmw='git merge work'
 alias gmm='git merge master'
 alias gmom='git merge origin/master'
+alias gmod='git merge origin/development'
 alias gs='git status'
 alias gf='git fetch'
 alias gd='git diff'
@@ -65,6 +66,7 @@ alias synserver='synergys -c ~/.synergy.conf'
 alias synclient='synergyc -n chromebook 192.168.1.136'
 alias erl='rlwrap -a erl' # give erl readline support
 alias iex='rlwrap -a iex' # give iex readline support
+alias sbcl='rlwrap -a sbcl' # give sbcl readline support
 alias servedir='ruby -run -e httpd . -p 9091' # serve current dir files on port 9091
 alias starcraft='/opt/cxoffice/bin/cxrun --bottle=StarCraft_II_Heart_of_the_Swarm --command="/home/jadams/.cxoffice/StarCraft_II_Heart_of_the_Swarm/dosdevices/c:/Program Files/StarCraft II/StarCraft II.exe"'
 alias subcountb='banner `subcount`|less'
