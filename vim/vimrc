@@ -66,6 +66,8 @@ Plugin 'chase/vim-ansible-yaml'
 
 """"" Utilities ========================
 Plugin 'scrooloose/syntastic' " Syntax highlighting
+  let g:syntastic_mode_map = { "mode": "active",
+                             \ "passive_filetypes": ["java"] }
 Plugin 'tomtom/tcomment_vim'  " Line commenting
   " By default, `gc` will toggle comments
 Plugin 'skalnik/vim-vroom'    " Run tests with <leader>t

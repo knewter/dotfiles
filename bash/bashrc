@@ -21,7 +21,7 @@ export TIPATH=~/.titanium
 
 export ANDROID_HOME=~/software/android/android-studio/sdk
 
-export PATH=$PATH:$ANDROID_TOOLS
+export PATH=$PATH:~/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:~/software/gradle-1.12/bin
 
@@ -96,8 +96,6 @@ source ~/liquidprompt/liquidprompt
 #fi
 #export PS1='C:${PWD//\//\\\}>'
 
-export RUBYOPT="rubygems"
-
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 [[ -s ./.rvmrc ]] && source ./.rvmrc
 
@@ -105,10 +103,13 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 #xmodmap ~/.xmodmap-esc
 
-source ~/erlang/erlangs/17.0/activate
+#source ~/erlang/erlangs/17.3/activate
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
+[[ -s "$HOME/.kiex/scripts/kiex" ]] && source "$HOME/.kiex/scripts/kiex"
 
 eval "$(direnv hook bash)"
+
+# For the arch laptop
+export LIBGL_DRIVERS_PATH=/usr/lib32/xorg/modules/dri
