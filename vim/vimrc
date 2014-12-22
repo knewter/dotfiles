@@ -62,6 +62,12 @@ autocmd FileType markdown set tw=80
 """"""" Ansible
 Plugin 'chase/vim-ansible-yaml'
 
+""""""" Dockerfile
+Plugin 'ekalinin/Dockerfile.vim'
+
+""""""" CoffeeScript
+Plugin 'kchmck/vim-coffee-script'
+
 """"" End Filetypes ====================
 
 """"" Utilities ========================
