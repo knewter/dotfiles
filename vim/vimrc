@@ -271,6 +271,10 @@ nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
 " Open the alternate file
 map ,, <C-^>
 
+" Comment/uncomment blocks by selecting them visually and using # or -#
+vnoremap # :s#^#\##<cr>
+vnoremap -# :s#^\###<cr>
+
 """ End Keyboard shortcut setup =================
 
 """ Vim environment handling tweaks ====
