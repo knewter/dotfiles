@@ -68,6 +68,9 @@ Plugin 'ekalinin/Dockerfile.vim'
 """"""" CoffeeScript
 Plugin 'kchmck/vim-coffee-script'
 
+""""""" Handlebars
+Plugin 'nono/vim-handlebars'
+
 """"" End Filetypes ====================
 
 """"" Utilities ========================
@@ -93,6 +96,9 @@ Plugin 'mattn/gist-vim'                  " create gists trivially from buffer, s
   if has('macunix')
     let g:gist_clip_command = 'pbcopy'
   endif
+
+Plugin 'sjl/gundo.vim'
+  nnoremap <F5> :GundoToggle<CR>
 """"" End Utilities ====================
 
 """"" UI Plugins =======================
