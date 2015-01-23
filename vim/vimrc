@@ -13,6 +13,7 @@
 "   6.1) Normalization
 " 7) Project-Specific items
 " 8) nvim support
+" 9) New things I learn
 
 """ Setup Vundle =======================
 set nocompatible " required for Vundle
@@ -243,6 +244,12 @@ endif
 " Show trailing whitespace and spaces before a tab:
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
+
+" Open files where we left off
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
 """ End UI Tweaks ======================
 
 """ Keyboard shortcut setup =====================
@@ -406,3 +413,7 @@ if has('nvim')
   set unnamedclip
 endif
 """ nvim support =======================
+
+""" New things I learn =================
+command TIL tabe~/Documents/TIL.md
+""" End New things I learn =============
