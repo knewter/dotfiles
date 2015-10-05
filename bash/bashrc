@@ -25,6 +25,8 @@ export PATH=$PATH:~/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:~/software/gradle-1.12/bin
 
+#export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -89,6 +91,10 @@ if [ -f ~/.bash_files/aliases ]; then
   . ~/.bash_files/aliases
 fi
 
+if [ -f ~/.bash_files/functions ]; then
+  . ~/.bash_files/functions
+fi
+
 source ~/liquidprompt/liquidprompt
 #if [ -f ~/.bash_files/prompts/elite ]; then
   #. ~/.bash_files/prompts/elite
@@ -103,7 +109,7 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 #xmodmap ~/.xmodmap-esc
 
-source /home/jadams/erlang/erlangs/17.4/activate
+source /home/jadams/erlang/erlangs/18.0/activate
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -113,3 +119,10 @@ eval "$(direnv hook bash)"
 
 # For the arch laptop
 export LIBGL_DRIVERS_PATH=/usr/lib32/xorg/modules/dri
+
+
+#source ~/.xsh
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+[[ -s "/home/jadams/.gvm/bin/gvm-init.sh" ]] && source "/home/jadams/.gvm/bin/gvm-init.sh"
