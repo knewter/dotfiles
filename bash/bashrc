@@ -91,6 +91,10 @@ if [ -f ~/.bash_files/aliases ]; then
   . ~/.bash_files/aliases
 fi
 
+if [ -f ~/erlang/kerl/bash_completion/kerl ]; then
+  . ~/erlang/kerl/bash_completion/kerl
+fi
+
 if [ -f ~/.bash_files/functions ]; then
   . ~/.bash_files/functions
 fi
@@ -109,7 +113,7 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 #xmodmap ~/.xmodmap-esc
 
-source /home/jadams/erlang/erlangs/18.0/activate
+source /home/jadams/erlang/erlangs/18.1/activate
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
