@@ -223,7 +223,7 @@ set cul " highlight current line
 " augroup END
 " hi CursorLineNR cterm=bold
 " augroup CLNRSet
-"     autocmd! ColorScheme * hi CursorLineNR cterm=bold
+"   autocmd! ColorScheme * hi CursorLineNR cterm=bold
 " augroup END
 
 " Highlight current column
@@ -273,10 +273,10 @@ let maplocalleader="\\"
 nnoremap <cr> :nohlsearch<cr>
 
 " NO ARROW KEYS COME ON
-map <Left> :echo "no!"<cr>
+map <Left>  :echo "no!"<cr>
 map <Right> :echo "no!"<cr>
-map <Up> :echo "no!"<cr>
-map <Down> :echo "no!"<cr>
+map <Up>    :echo "no!"<cr>
+map <Down>  :echo "no!"<cr>
 
 " Custom split opening / closing behaviour
 map <C-N> :vsp .<CR>
