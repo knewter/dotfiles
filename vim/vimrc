@@ -56,10 +56,11 @@ Plugin 'tpope/vim-haml'
 Plugin 'slim-template/vim-slim'
 
 """"""" Markdown
-" Markdown is now included in vim, but by default .md is read as Modula-2
-" files.  This fixes that, because I don't ever edit Modula-2 files :)
+" Use fenced code blocks in markdown
 Plugin 'jtratner/vim-flavored-markdown'
   let g:markdown_fenced_languages=['ruby', 'javascript', 'elixir', 'clojure', 'sh', 'html', 'sass', 'scss', 'haml', 'erlang']
+" Markdown is now included in vim, but by default .md is read as Modula-2
+" files.  This fixes that, because I don't ever edit Modula-2 files :)
 autocmd BufNewFile,BufReadPost *.md,*.markdown set filetype=markdown
 autocmd FileType markdown set tw=80
 
