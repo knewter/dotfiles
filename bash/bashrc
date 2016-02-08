@@ -122,7 +122,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 eval "$(direnv hook bash)"
 
 # For the arch laptop
-export LIBGL_DRIVERS_PATH=/usr/lib32/xorg/modules/dri
+#export LIBGL_DRIVERS_PATH=/usr/lib32/xorg/modules/dri
 
 
 #source ~/.xsh
