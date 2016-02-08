@@ -91,6 +91,10 @@ if [ -f ~/.bash_files/aliases ]; then
   . ~/.bash_files/aliases
 fi
 
+if [ -f ~/erlang/kerl/bash_completion/kerl ]; then
+  . ~/erlang/kerl/bash_completion/kerl
+fi
+
 if [ -f ~/.bash_files/functions ]; then
   . ~/.bash_files/functions
 fi

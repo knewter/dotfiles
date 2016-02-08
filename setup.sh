@@ -35,6 +35,7 @@ ln -sf `pwd`/tmux/teamocil ~/.teamocil
 ln -sf `pwd`/synergy/synergy.conf ~/.synergy.conf
 
 # bins
+mkdir -p ~/bin
 ln -sf `pwd`/bin/tspace ~/bin/tspace
 ln -sf `pwd`/bin/list-terminal-colors ~/bin/list-terminal-colors
 ln -sf `pwd`/bin/subcount ~/bin/subcount
