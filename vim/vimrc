@@ -34,6 +34,9 @@ Plugin 'vim-ruby/vim-ruby'
 """"""" Elixir
 Plugin 'elixir-lang/vim-elixir'
 
+""""""" Elm
+Plugin 'lambdatoast/elm.vim'
+
 """"""" JavaScript
 Plugin 'claco/jasmine.vim'
 Plugin 'elzr/vim-json'
