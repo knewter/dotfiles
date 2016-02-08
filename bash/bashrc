@@ -109,7 +109,7 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 #xmodmap ~/.xmodmap-esc
 
-source /home/jadams/erlang/erlangs/18.0/activate
+source /home/jadams/erlang/erlangs/18.1/activate
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -118,7 +118,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 eval "$(direnv hook bash)"
 
 # For the arch laptop
-export LIBGL_DRIVERS_PATH=/usr/lib32/xorg/modules/dri
+#export LIBGL_DRIVERS_PATH=/usr/lib32/xorg/modules/dri
 
 
 #source ~/.xsh

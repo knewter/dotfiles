@@ -26,6 +26,10 @@ call vundle#begin()
 " let Vundle manage Vundle.  Required
 Plugin 'gmarik/Vundle.vim'
 
+" Set leader
+let mapleader=","
+let maplocalleader="\\"
+
 """"" Filetypes ========================
 
 """"""" Ruby
@@ -44,6 +48,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'Shutnik/jshint2.vim'
 Plugin 'burnettk/vim-angular'
 Plugin 'mtscout6/vim-cjsx'
+Plugin 'ElmCast/elm-vim'
 
 """"""" Web Development (HTML/CSS/preprocessors/etc)
 Plugin 'aaronjensen/vim-sass-status'
@@ -87,20 +92,22 @@ Plugin 'markcornick/vim-terraform'
 Plugin 'editorconfig/editorconfig-vim' " EditorConfig support
 
 Plugin 'scrooloose/syntastic' " Syntax highlighting
-  let g:syntastic_mode_map = { "mode": "active",
-                             \ "passive_filetypes": ["java"] }
+  let g:syntastic_mode_map = { "mode": "passive",
+                             \ "passive_filetypes": ["java", "html", "css", "scss"] }
 Plugin 'tomtom/tcomment_vim'  " Line commenting
   " By default, `gc` will toggle comments
-Plugin 'skalnik/vim-vroom'    " Run tests with <leader>t
-  let g:vroom_map_keys = 0
-  silent! map <unique> <Leader>t :VroomRunTestFile<CR>
-  silent! map <unique> <Leader>T :VroomRunNearestTest<CR>
-  silent! map <unique> <Leader>l :VroomRunLastTest<CR>
+
+Plugin 'janko-m/vim-test'                " Run tests with varying granularity
+  nmap <silent> <leader>t :TestNearest<CR>
+  nmap <silent> <leader>T :TestFile<CR>
+  nmap <silent> <leader>a :TestSuite<CR>
+  nmap <silent> <leader>l :TestLast<CR>
+  nmap <silent> <leader>g :TestVisit<CR>
 
 Plugin 'christoomey/vim-tmux-navigator'  " Navigate between tmux panes and vim splits seamlessly
 Plugin 'tpope/vim-fugitive'              " git support from dat tpope
-Plugin 'vim-scripts/SyntaxRange' 	 " Allow ranges within a file to define different syntax mappings
-Plugin 'mattn/webapi-vim' 		 " vim interface to web apis.  Required for gist-vim
+Plugin 'vim-scripts/SyntaxRange'         " Allow ranges within a file to define different syntax mappings
+Plugin 'mattn/webapi-vim' 		           " vim interface to web apis.  Required for gist-vim
 Plugin 'mattn/gist-vim'                  " create gists trivially from buffer, selection, etc.
   let g:gist_open_browser_after_post = 1
   let g:gist_detect_filetype = 2
@@ -264,9 +271,6 @@ endif
 """ End UI Tweaks ======================
 
 """ Keyboard shortcut setup =====================
-let mapleader=","
-let maplocalleader="\\"
-
 " Remove highlights
 " Clear the search buffer when hitting return
 nnoremap <cr> :nohlsearch<cr>
