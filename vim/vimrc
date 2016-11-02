@@ -125,8 +125,9 @@ Plugin 'sjl/gundo.vim'
 """"" End Utilities ====================
 
 """"" UI Plugins =======================
-Plugin 'bling/vim-airline'       " UI statusbar niceties
-  set laststatus=2               " enable airline even if no splits
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes' " UI statusbar niceties
+  set laststatus=2                      " enable airline even if no splits
   let g:airline_theme='luna'
   let g:airline_powerline_fonts=1
   let g:airline_enable_branch=1
