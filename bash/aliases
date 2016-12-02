@@ -39,7 +39,6 @@ alias gc='git commit -v'
 alias gum="cd ~/javascript/gumshoe/frontend"
 alias tru="cd ~/rails/trucoin_rails"
 alias may="cd ~/ruby/mayhem"
-alias sips="cd ~/Dropbox/ElixirSips"
 alias expertvpn="sudo pon EXPeRT"
 alias xcast="cd /home/jadams/ruby/Xcast/ && ./Xcast -d ~/screencasts -p --wait -n "
 alias chromechat="tmux new-session 'rvm use ruby-2.0.0@system; teamocil chromechat'"
@@ -51,6 +50,9 @@ alias erlang_dc_part_1="tmux new-session 'rvm use ruby-2.0.0@system; teamocil er
 alias erlang_dc_part_2="tmux new-session 'rvm use ruby-2.0.0@system; teamocil erlang_dc_part_2'"
 alias usfe="cd ~/projects/uspto/frontend/"
 alias jb="cd ~/projects/uspto/jboss-eap-6.1/; ./bin/standalone.sh"
+alias daily="cd ~/projects/dailydrip/dailydrip.com"
+alias drips="cd ~/Dropbox\ \(DailyDrip\)/DailyDrip\ Content/"
+alias sips="cd ~/Dropbox\ \(DailyDrip\)/DailyDrip\ Content/Elixir/"
 
 ######################################
 # Misc Stuff
@@ -64,10 +66,18 @@ alias ack='ack-grep'
 alias isotope='ssh isotope11.selfip.com'
 alias synserver='synergys -c ~/.synergy.conf'
 alias synclient='synergyc -n chromebook 192.168.1.136'
-alias erl='rlwrap -a erl' # give erl readline support
-alias iex='rlwrap -a iex' # give iex readline support
-alias sbcl='rlwrap -a sbcl' # give sbcl readline support
+#alias erl='rlwrap -a erl' # give erl readline support
+#alias iex='rlwrap -a iex' # give iex readline support
+#alias sbcl='rlwrap -a sbcl' # give sbcl readline support
 alias servedir='ruby -run -e httpd . -p 9091' # serve current dir files on port 9091
 alias starcraft='/opt/cxoffice/bin/cxrun --bottle=StarCraft_II_Heart_of_the_Swarm --command="/home/jadams/.cxoffice/StarCraft_II_Heart_of_the_Swarm/dosdevices/c:/Program Files/StarCraft II/StarCraft II.exe"'
 alias subcountb='banner `subcount`|less'
 alias vpn='/opt/cisco/anyconnect/bin/vpn'
+
+alias fs="foreman start -f Procfile.dev.osx"
+alias fr="foreman run"
+
+# Thanks Corey Haines!
+alias elmloc='find . -name '\''*.elm'\'' | grep -v elm-stuff | xargs cloc'
+
+alias scratch="vim ~/Dropbox\ \(Personal\)/scratch.md"

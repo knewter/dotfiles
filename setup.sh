@@ -6,13 +6,13 @@ git config --global user.name "Josh Adams"
 
 # vim
 ln -sf `pwd`/vim/vimrc ~/.vimrc
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+#git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # bash
 ## prepare liquidprompt
 pushd ~
-git clone https://github.com/nojhan/liquidprompt.git
-source liquidprompt/liquidprompt
+#git clone https://github.com/nojhan/liquidprompt.git
+#source liquidprompt/liquidprompt
 ## prepare the rest of the bash files
 mkdir -p ~/.bash_files
 popd

@@ -1,19 +1,19 @@
 " Table of Contents
 " 1) Vundle
-"   1.1) Filetypes
-"   1.2) Utilities
-"   1.3) UI Plugins
-"   1.4) Code Navigation
-" 2) UI Tweaks
-" 3) Keyboard shortcut Setup
+"   1.1) Filetypes           #filetypes
+"   1.2) Utilities           #utilities
+"   1.3) UI Plugins          #ui-plugins
+"   1.4) Code Navigation     #code-navigation
+" 2) UI Tweaks               #ui-tweaks
+" 3) Keyboard shortcut Setup #keyboard
 " 4) vim environment handling tweaks (needs work / renaming)
-" 5) File navigation
-" 6) Auto Commands
+" 5) File navigation         #navigation
+" 6) Auto Commands           #auto-cmd
 "   6.1) Filetypes
 "   6.1) Normalization
-" 7) Project-Specific items
-" 8) nvim support
-" 9) New things I learn
+" 7) Project-Specific items  #project
+" 8) nvim support            #nvim
+" 9) New things I learn      #new-things
 
 """ Setup Vundle =======================
 set nocompatible " required for Vundle
@@ -30,7 +30,7 @@ Plugin 'gmarik/Vundle.vim'
 let mapleader=","
 let maplocalleader="\\"
 
-""""" Filetypes ========================
+""""" Filetypes ======================== #filetypes
 
 """"""" Ruby
 Plugin 'vim-ruby/vim-ruby'
@@ -39,7 +39,9 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'elixir-lang/vim-elixir'
 
 """"""" Elm
-Plugin 'lambdatoast/elm.vim'
+"Plugin 'lambdatoast/elm.vim'
+Plugin 'ElmCast/elm-vim'
+  let g:elm_format_autosave = 1
 
 """"""" JavaScript
 Plugin 'claco/jasmine.vim'
@@ -51,7 +53,6 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'Shutnik/jshint2.vim'
 Plugin 'burnettk/vim-angular'
 Plugin 'mtscout6/vim-cjsx'
-Plugin 'ElmCast/elm-vim'
 
 """"""" Web Development (HTML/CSS/preprocessors/etc)
 Plugin 'aaronjensen/vim-sass-status'
@@ -66,7 +67,7 @@ Plugin 'slim-template/vim-slim'
 """"""" Markdown
 " Use fenced code blocks in markdown
 Plugin 'jtratner/vim-flavored-markdown'
-  let g:markdown_fenced_languages=['ruby', 'javascript', 'elixir', 'clojure', 'sh', 'html', 'sass', 'scss', 'haml', 'erlang']
+  let g:markdown_fenced_languages=['ruby', 'javascript', 'elixir', 'clojure', 'sh', 'html', 'sass', 'scss', 'haml', 'erlang', 'elm']
 " Markdown is now included in vim, but by default .md is read as Modula-2
 " files.  This fixes that, because I don't ever edit Modula-2 files :)
 autocmd BufNewFile,BufReadPost *.md,*.markdown set filetype=markdown
@@ -92,12 +93,19 @@ Plugin 'markcornick/vim-terraform'
 
 """"" End Filetypes ====================
 
-""""" Utilities ========================
+""""" Utilities ======================== #utilities
 Plugin 'editorconfig/editorconfig-vim' " EditorConfig support
 
 Plugin 'scrooloose/syntastic' " Syntax highlighting
-  let g:syntastic_mode_map = { "mode": "passive",
-                             \ "passive_filetypes": ["java", "html", "css", "scss"] }
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+  let g:syntastic_javascript_checkers = ['eslint']
+  let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
+
+Plugin 'tpope/vim-unimpaired' " Jump between quicklist, location (syntastic, etc) items with ease, among other things
+
 Plugin 'tomtom/tcomment_vim'  " Line commenting
   " By default, `gc` will toggle comments
 
@@ -110,6 +118,7 @@ Plugin 'janko-m/vim-test'                " Run tests with varying granularity
 
 Plugin 'christoomey/vim-tmux-navigator'  " Navigate between tmux panes and vim splits seamlessly
 Plugin 'tpope/vim-fugitive'              " git support from dat tpope
+Plugin 'tpope/vim-rhubarb'               " github support from dat tpope
 Plugin 'vim-scripts/SyntaxRange'         " Allow ranges within a file to define different syntax mappings
 Plugin 'mattn/webapi-vim' 		           " vim interface to web apis.  Required for gist-vim
 Plugin 'mattn/gist-vim'                  " create gists trivially from buffer, selection, etc.
@@ -124,39 +133,33 @@ Plugin 'sjl/gundo.vim'
   nnoremap <F5> :GundoToggle<CR>
 """"" End Utilities ====================
 
-""""" UI Plugins =======================
-Plugin 'bling/vim-airline'       " UI statusbar niceties
+""""" UI Plugins ======================= #ui-plugins
+Plugin 'vim-airline/vim-airline'       " UI statusbar niceties
+Plugin 'vim-airline/vim-airline-themes' " themes
   set laststatus=2               " enable airline even if no splits
   let g:airline_theme='luna'
+  let g:bufferline_echo = 0
   let g:airline_powerline_fonts=1
   let g:airline_enable_branch=1
   let g:airline_enable_syntastic=1
-  let g:airline_powerline_fonts = 1
-  let g:airline_left_sep = ''
-  let g:airline_right_sep = ''
-  let g:airline_linecolumn_prefix = '␊ '
-  let g:airline_linecolumn_prefix = '␤ '
-  let g:airline_linecolumn_prefix = '¶ '
   let g:airline_branch_prefix = '⎇ '
-  let g:airline_paste_symbol = 'ρ'
-  let g:airline_paste_symbol = 'Þ'
   let g:airline_paste_symbol = '∥'
   let g:airline#extensions#tabline#enabled = 0
-  let g:airline_mode_map = {
-        \ 'n' : 'N',
-        \ 'i' : 'I',
-        \ 'R' : 'REPLACE',
-        \ 'v' : 'VISUAL',
-        \ 'V' : 'V-LINE',
-        \ 'c' : 'CMD   ',
-        \ '': 'V-BLCK',
-        \ }
+  " let g:airline_mode_map = {
+  "       \ 'n' : 'N',
+  "       \ 'i' : 'I',
+  "       \ 'R' : 'REPLACE',
+  "       \ 'v' : 'VISUAL',
+  "       \ 'V' : 'V-LINE',
+  "       \ 'c' : 'CMD   ',
+  "       \ '': 'V-BLCK',
+  "       \ }
 Plugin 'chriskempson/base16-vim' " base16 theme
 Plugin 'dandorman/vim-colors'
 Plugin 'roman/golden-ratio'
 """"" End UI Plugins ===================
 
-""""" Code Navigation ===============
+""""" Code Navigation =============== #code-navigation
 Plugin 'kien/ctrlp.vim.git'
   let g:ctrlp_match_window_bottom = 1    " Show at bottom of window
   let g:ctrlp_working_path_mode = 'ra'   " Our working path is our VCS project or the current directory
@@ -202,7 +205,7 @@ call vundle#end() " required for Vundle
 filetype plugin indent on
 """ End setup Vundle ===================
 
-""" UI Tweaks ==========================
+""" UI Tweaks ========================== #ui-tweaks
 set number " line numbering
 set t_Co=256 " Force 256 colors
 
@@ -272,9 +275,12 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
 endif
+
+" Allow backspace to not be braindead on os x
+set backspace=indent,eol,start
 """ End UI Tweaks ======================
 
-""" Keyboard shortcut setup =====================
+""" Keyboard shortcut setup ===================== #keyboard
 " Remove highlights
 " Clear the search buffer when hitting return
 nnoremap <cr> :nohlsearch<cr>
@@ -388,13 +394,13 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
 set iskeyword+=-
 """ End Vim environment handling tweaks
 
-""" File navigation ====================
+""" File navigation ==================== #navigation
 " case insensitive highlight matches in normal/visual mode
 nnoremap / /\v
 vnoremap / /\v
 """ End File navigation ================
 
-""" Auto Commands ======================
+""" Auto Commands ====================== #auto-cmd
 """"" Filetypes ========================
 augroup erlang
   au!
@@ -404,9 +410,22 @@ augroup erlang
   au BufNewFile,BufRead relx.config setlocal filetype=erlang
 augroup END
 
+augroup elm
+  au!
+  au BufNewFile,BufRead *.elm setlocal tabstop=4
+  au BufNewFile,BufRead *.elm setlocal shiftwidth=4
+  au BufNewFile,BufRead *.elm setlocal softtabstop=4
+augroup END
+
 augroup dotenv
   au!
   au BufNewFile,BufRead *.envrc setlocal filetype=sh
+augroup END
+
+augroup es6
+  au!
+  au BufNewFile,BufRead *.es6 setlocal filetype=javascript
+  au BufNewFile,BufRead *.es6.erb setlocal filetype=javascript
 augroup END
 """"" End Filetypes ====================
 
@@ -421,18 +440,23 @@ au BufWrite * silent call DeleteTrailingWS()
 """"" End Normalization ================
 """ End Auto Commands ==================
 
-""" Project-Specific Items =============
+""" Project-Specific Items ============= #project
 " Enable per-project vimrcs
 set exrc   " enable per-directory .vimrc files
 set secure " disable unsafe commands in local .vimrc files
 """ End Project-Specific Items =========
 
-""" nvim support =======================
+""" nvim support ======================= #nvim
 if has('nvim')
   set unnamedclip
 endif
 """ nvim support =======================
 
-""" New things I learn =================
+""" Disable safe-write ================= #safe-write
+" http://vimdoc.sourceforge.net/htmldoc/options.html#'backupcopy'
+"set backupcopy=yes
+""" End Disable safe-write =============
+
+""" New things I learn ================= #new-things
 command TIL tabe~/Documents/TIL.md
 """ End New things I learn =============
