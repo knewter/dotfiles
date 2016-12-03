@@ -1,3 +1,8 @@
+# Helper to see if a command exists
+command_exists () {
+  type "$1" &> /dev/null ;
+}
+
 ######################################
 # Ruby / Rails Stuff
 ######################################
@@ -81,3 +86,8 @@ alias fr="foreman run"
 alias elmloc='find . -name '\''*.elm'\'' | grep -v elm-stuff | xargs cloc'
 
 alias scratch="vim ~/Dropbox\ \(Personal\)/scratch.md"
+
+# Use neovim if it's installed
+if command_exists nvim ; then
+  alias vim='nvim'
+fi

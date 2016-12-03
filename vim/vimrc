@@ -32,11 +32,17 @@ let maplocalleader="\\"
 
 """"" Filetypes ======================== #filetypes
 
+""""""" Polyglot loads language support on demand!
+Plugin 'sheerun/vim-polyglot'
+
 """"""" Ruby
 Plugin 'vim-ruby/vim-ruby'
 
 """"""" Elixir
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'c-brenn/phoenix.vim'             " Like vim-rails, but for phoenix
+Plugin 'tpope/vim-projectionist'
+Plugin 'slashmili/alchemist.vim'         " use alchemist-server, from vim
 
 """"""" Elm
 "Plugin 'lambdatoast/elm.vim'
@@ -160,6 +166,16 @@ Plugin 'roman/golden-ratio'
 """"" End UI Plugins ===================
 
 """"" Code Navigation =============== #code-navigation
+Plugin 'ludovicchabant/vim-gutentags' " keep tags updated in the background
+  let g:gutentags_cache_dir = '~/.tags_cache'
+Plugin 'neomake/neomake'              " Execute code checks, find mistakes, in the background
+  autocmd! BufWritePost * Neomake
+  let g:neomake_markdown_enabled_makers = []
+Plugin 'mileszs/ack.vim'              " Use ag to search in files with ,a
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+  nnoremap <Leader>a :Ack!<Space>
+endif
 Plugin 'kien/ctrlp.vim.git'
   let g:ctrlp_match_window_bottom = 1    " Show at bottom of window
   let g:ctrlp_working_path_mode = 'ra'   " Our working path is our VCS project or the current directory
