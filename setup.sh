@@ -42,3 +42,7 @@ ln -sf `pwd`/bin/subcount ~/bin/subcount
 
 # hyper
 ln -sf `pwd`/hyper/.hyper.js ~/.hyper.js
+
+# nvim
+mkdir -p ~/.config/nvim
+ln -sf `pwd`/nvim/init.vim ~/.config/nvim/
