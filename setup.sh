@@ -39,3 +39,6 @@ mkdir -p ~/bin
 ln -sf `pwd`/bin/tspace ~/bin/tspace
 ln -sf `pwd`/bin/list-terminal-colors ~/bin/list-terminal-colors
 ln -sf `pwd`/bin/subcount ~/bin/subcount
+
+# hyper
+ln -sf `pwd`/hyper/.hyper.js ~/.hyper.js

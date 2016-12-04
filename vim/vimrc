@@ -338,26 +338,20 @@ vnoremap -# :s#^\###<cr>
 " taken from
 " http://stackoverflow.com/questions/4331776/change-vim-swap-backup-undo-file-name
 " Save your backups to a less annoying place than the current directory.
-" If you have .vim-backup in the current directory, it'll use that.
-" Otherwise it saves it to ~/.vim/backup or . if all else fails.
-if isdirectory($HOME . '/.vim/backup') == 0
-  :silent !mkdir -p ~/.vim/backup >/dev/null 2>&1
+if isdirectory($HOME . '/.config/nvim/backup') == 0
+  :silent !mkdir -p ~/.config/nvim/backup >/dev/null 2>&1
 endif
 set backupdir-=.
 set backupdir+=.
 set backupdir-=~/
-set backupdir^=~/.vim/backup/
-set backupdir^=./.vim-backup/
+set backupdir^=~/.config/nvim/backup/
 set backup
 
 " Save your swp files to a less annoying place than the current directory.
-" If you have .vim-swap in the current directory, it'll use that.
-" Otherwise it saves it to ~/.vim/swap, ~/tmp or .
-if isdirectory($HOME . '/.vim/swap') == 0
-  :silent !mkdir -p ~/.vim/swap >/dev/null 2>&1
+if isdirectory($HOME . '/.config/nvim/swap') == 0
+  :silent !mkdir -p ~/.config/nvim/swap >/dev/null 2>&1
 endif
-set directory=./.vim-swap//
-set directory+=~/.vim/swap//
+set directory+=~/.config/nvim/swap//
 set directory+=~/tmp//
 set directory+=.
 
