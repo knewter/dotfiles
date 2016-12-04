@@ -27,6 +27,11 @@ set shiftwidth=2
 " set default encoding to UTF-8
 set encoding=utf-8
 
+" enable omni syntax completion
+set omnifunc=syntaxcomplete#Complete
+
+" turn off mouse
+set mouse=""
 
 """ Leader #leader
 " Use comma for leader
@@ -109,6 +114,55 @@ Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'tpope/vim-vinegar' " navigate up a directory with '-' in netrw, among other things
 
+""""" Utilities ======================== #utilities
+" EditorConfig support
+Plug 'editorconfig/editorconfig-vim'
+
+" Jump between quicklist, location (syntastic, etc) items with ease, among other things
+Plug 'tpope/vim-unimpaired'
+
+" Line commenting
+Plug 'tomtom/tcomment_vim'
+  " By default, `gc` will toggle comments
+  "
+Plug 'janko-m/vim-test'                " Run tests with varying granularity
+  nmap <silent> <leader>t :TestNearest<CR>
+  nmap <silent> <leader>T :TestFile<CR>
+  nmap <silent> <leader>a :TestSuite<CR>
+  nmap <silent> <leader>l :TestLast<CR>
+  nmap <silent> <leader>g :TestVisit<CR>
+
+" Navigate between tmux panes and vim splits seamlessly
+Plug 'christoomey/vim-tmux-navigator'
+  " Handle <C-h> appropriately.
+  " Details here: https://github.com/christoomey/vim-tmux-navigator#user-content-it-doesnt-work-in-neovim-specifically-c-h
+  nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
+  " In essence: in neovim, <C-h> sends a backspace - this captures that in
+  " normal mode and issues the left navigation command
+
+
+" git support from dat tpope
+Plug 'tpope/vim-fugitive'
+
+" vim interface to web apis.  Required for gist-vim
+Plug 'mattn/webapi-vim'
+
+" create gists trivially from buffer, selection, etc.
+Plug 'mattn/gist-vim'
+  let g:gist_open_browser_after_post = 1
+  let g:gist_detect_filetype = 2
+  let g:gist_post_private = 1
+  if has('macunix')
+    let g:gist_clip_command = 'pbcopy'
+  endif
+
+" github support from dat tpope
+Plug 'tpope/vim-rhubarb'
+
+" visualize your undo tree
+Plug 'sjl/gundo.vim'
+  nnoremap <F5> :GundoToggle<CR>
+
 call plug#end()
 """""""""""""" End Plugins
 
@@ -166,3 +220,45 @@ nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
 " Open the alternate file
 map ,, <C-^>
 
+" Makes foo-bar considered one word
+set iskeyword+=-
+
+""" Auto Commands ====================== #auto-cmd
+""""" Filetypes ========================
+augroup erlang
+  au!
+  au BufNewFile,BufRead *.erl setlocal tabstop=4
+  au BufNewFile,BufRead *.erl setlocal shiftwidth=4
+  au BufNewFile,BufRead *.erl setlocal softtabstop=4
+  au BufNewFile,BufRead relx.config setlocal filetype=erlang
+augroup END
+
+augroup elm
+  au!
+  au BufNewFile,BufRead *.elm setlocal tabstop=4
+  au BufNewFile,BufRead *.elm setlocal shiftwidth=4
+  au BufNewFile,BufRead *.elm setlocal softtabstop=4
+augroup END
+
+augroup dotenv
+  au!
+  au BufNewFile,BufRead *.envrc setlocal filetype=sh
+augroup END
+
+augroup es6
+  au!
+  au BufNewFile,BufRead *.es6 setlocal filetype=javascript
+  au BufNewFile,BufRead *.es6.erb setlocal filetype=javascript
+augroup END
+""""" End Filetypes ====================
+
+""""" Normalization ====================
+" Delete trailing white space on save
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+au BufWrite * silent call DeleteTrailingWS()
+""""" End Normalization ================
+""" End Auto Commands ==================
