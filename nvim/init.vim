@@ -163,6 +163,17 @@ Plug 'tpope/vim-rhubarb'
 Plug 'sjl/gundo.vim'
   nnoremap <F5> :GundoToggle<CR>
 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+  let g:airline_theme= 'luna'
+  let g:bufferline_echo = 0
+  let g:airline_powerline_fonts=1
+  let g:airline_enable_branch=1
+  let g:airline_enable_syntastic=1
+  let g:airline_branch_prefix = '⎇ '
+  let g:airline_paste_symbol = '∥'
+  let g:airline#extensions#tabline#enabled = 0
+
 call plug#end()
 """""""""""""" End Plugins
 
@@ -171,9 +182,14 @@ call plug#end()
 set number
 
 """ Theme #theme
+if (empty($TMUX))
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
 set background=dark
 syntax enable
-colorscheme molokayo
+colorscheme molokai
 
 " hightlight cursor position
 set cursorline
@@ -190,7 +206,6 @@ set smartcase
 
 " Set the title of the iterm tab
 set title
-
 
 """ Keyboard
 " Remove highlights

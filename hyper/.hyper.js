@@ -1,7 +1,7 @@
 module.exports = {
   config: {
     // default font size in pixels for all tabs
-    fontSize: 13,
+    fontSize: 20,
 
     // font family with optional fallbacks
     fontFamily: '"Source Code Pro for Powerline", Menlo, "DejaVu Sans Mono", "Lucida Console", monospace',
@@ -54,7 +54,7 @@ module.exports = {
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
     // if left empty, your system's login shell will be used by default
-    shell: 'bash',
+    shell: '/usr/local/bin/fish',
 
     // for setting shell arguments (i.e. for using interactive shellArgs: ['-i'])
     // by default ['--login'] will be used
@@ -86,13 +86,14 @@ module.exports = {
   //   `project#1.0.1`
   plugins: [
     'hyper-monokai', // monokai theme
-    //'hyper-material', // material theme
     'hyper-font-smoothing', // anti-aliased fonts
     'hyper-no-close', // remove close button in tabs
     'hyperchart', // charts
     'hypercwd', // open new tabs in the same cwd as current tab
     'hyperlinks', // make links work like iTerm does
     'hyperterm-summon', // summon hyperterm, system-wide, with a hotkey
+    "hyperterm-paste", // make pasting nicer, and safer
+    "hyperterm-alternatescroll", // mouse scrolling for alternate screens - less, git log, nano, etc
   ],
 
   // in development, you can create a directory under

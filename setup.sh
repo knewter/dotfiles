@@ -46,3 +46,12 @@ ln -sf `pwd`/hyper/.hyper.js ~/.hyper.js
 # nvim
 mkdir -p ~/.config/nvim
 ln -sf `pwd`/nvim/init.vim ~/.config/nvim/
+
+# oh-my-fish
+mkdir -p ~/.config/omf
+ln -sf `pwd`/omf/bundle ~/.config/omf/
+ln -sf `pwd`/omf/channel ~/.config/omf/
+ln -sf `pwd`/omf/fonts ~/.config/omf/
+ln -sf `pwd`/omf/init.fish ~/.config/omf/
+ln -sf `pwd`/omf/asdf.fish ~/.config/omf/
+ln -sf `pwd`/omf/theme ~/.config/omf/
