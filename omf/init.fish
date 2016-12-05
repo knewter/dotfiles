@@ -1,9 +1,11 @@
 set -x PATH $HOME/bin/ $PATH
 set -x EDITOR nvim
 set -x CUCUMBER_FORMAT pretty
+# fzf will ignore files
+set -x FZF_DEFAULT_COMMAND 'ag -g ""'
 
 # Load fishmarks (http://github.com/techwizrd/fishmarks)
-. ~/.fishmarks/marks.fish
+source ~/.fishmarks/marks.fish
 
 # Go to dailydrip content
 function drips
