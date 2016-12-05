@@ -33,6 +33,16 @@ set omnifunc=syntaxcomplete#Complete
 " turn off mouse
 set mouse=""
 
+" Navigate with C-h,j,k,l
+:tnoremap <C-h> <C-\><C-n><C-w>h
+:tnoremap <C-j> <C-\><C-n><C-w>j
+:tnoremap <C-k> <C-\><C-n><C-w>k
+:tnoremap <C-l> <C-\><C-n><C-w>l
+:nnoremap <C-h> <C-w>h
+:nnoremap <C-j> <C-w>j
+:nnoremap <C-k> <C-w>k
+:nnoremap <C-l> <C-w>l
+
 """ Leader #leader
 " Use comma for leader
 let g:mapleader=','
@@ -136,15 +146,8 @@ Plug 'janko-m/vim-test'                " Run tests with varying granularity
   nmap <silent> <leader>a :TestSuite<CR>
   nmap <silent> <leader>l :TestLast<CR>
   nmap <silent> <leader>g :TestVisit<CR>
-
-" Navigate between tmux panes and vim splits seamlessly
-Plug 'christoomey/vim-tmux-navigator'
-  " Handle <C-h> appropriately.
-  " Details here: https://github.com/christoomey/vim-tmux-navigator#user-content-it-doesnt-work-in-neovim-specifically-c-h
-  nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
-  " In essence: in neovim, <C-h> sends a backspace - this captures that in
-  " normal mode and issues the left navigation command
-
+  " run tests in neovim strategy
+  let test#strategy = "neovim"
 
 " git support from dat tpope
 Plug 'tpope/vim-fugitive'
