@@ -1,5 +1,5 @@
 set -x PATH $HOME/bin/ $PATH
-set -x EDITOR vim
+set -x EDITOR nvim
 set -x CUCUMBER_FORMAT pretty
 
 # Load fishmarks (http://github.com/techwizrd/fishmarks)
