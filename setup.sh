@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# git
-git config --global user.email "josh.rubyist@gmail.com"
-git config --global user.name "Josh Adams"
-
 # vim
 ln -sf `pwd`/vim/vimrc ~/.vimrc
 #git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -43,6 +39,11 @@ ln -sf `pwd`/bin/subcount ~/bin/subcount
 # hyper
 ln -sf `pwd`/hyper/.hyper.js ~/.hyper.js
 
+# Plug (to be used with nvim)
+# https://github.com/junegunn/vim-plug
+curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 # nvim
 mkdir -p ~/.config/nvim
 ln -sf `pwd`/nvim/init.vim ~/.config/nvim/
@@ -55,3 +56,9 @@ ln -sf `pwd`/omf/fonts ~/.config/omf/
 ln -sf `pwd`/omf/init.fish ~/.config/omf/
 ln -sf `pwd`/omf/asdf.fish ~/.config/omf/
 ln -sf `pwd`/omf/theme ~/.config/omf/
+
+echo "# Now for some manual stuff, sorry!"
+echo "## nvim"
+echo "To install the nvim plugins, open up vim and type ':PlugInstall'\n"
+echo "## git"
+echo "Setup your git config like so:\ngit config --global user.email "josh.rubyist@gmail.com"\ngit config --global user.name "Josh Adams""
