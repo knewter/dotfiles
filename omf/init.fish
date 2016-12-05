@@ -11,6 +11,10 @@ function drips
 end
 
 ### git ################
+function gfo
+  git fetch origin
+end
+
 function gpsom
   git push origin master
 end
