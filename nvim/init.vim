@@ -34,14 +34,15 @@ set omnifunc=syntaxcomplete#Complete
 set mouse=""
 
 " Navigate with C-h,j,k,l
-:tnoremap <C-h> <C-\><C-n><C-w>h
-:tnoremap <C-j> <C-\><C-n><C-w>j
-:tnoremap <C-k> <C-\><C-n><C-w>k
-:tnoremap <C-l> <C-\><C-n><C-w>l
-:nnoremap <C-h> <C-w>h
-:nnoremap <C-j> <C-w>j
-:nnoremap <C-k> <C-w>k
-:nnoremap <C-l> <C-w>l
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <silent> <BS> <C-w>h
 
 """ Leader #leader
 " Use comma for leader
@@ -86,18 +87,22 @@ Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
   nnoremap <silent> <C-P> :FZF<cr>
+  augroup localfzf
+    au FileType fzf :tnoremap <buffer> <c-j> <c-j>
+    au FileType fzf :tnoremap <buffer> <c-k> <c-k>
+  augroup END
 
 " Execute code checks, find mistakes, in the background
 Plug 'neomake/neomake'
   " Run Neomake when I save any buffer
-  augroup neomake
+  augroup localneomake
     autocmd! BufWritePost * Neomake
   augroup END
   " Don't tell me to use smartquotes in markdown ok?
   let g:neomake_markdown_enabled_makers = []
 
   " Configure a nice credo setup, courtesy https://github.com/neomake/neomake/pull/300
-  let g:neomake_elixir_enabled_makers = ['mycredo']
+  let g:neomake_elixir_enabled_makers = ['mix', 'mycredo']
   function! NeomakeCredoErrorType(entry)
     if a:entry.type ==# 'F'      " Refactoring opportunities
       let l:type = 'W'
