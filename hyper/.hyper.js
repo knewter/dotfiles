@@ -93,7 +93,6 @@ module.exports = {
     'hyperlinks', // make links work like iTerm does
     'hyperterm-summon', // summon hyperterm, system-wide, with a hotkey
     "hyperterm-paste", // make pasting nicer, and safer
-    "hyperterm-alternatescroll", // mouse scrolling for alternate screens - less, git log, nano, etc
   ],
 
   // in development, you can create a directory under
