@@ -62,3 +62,4 @@ echo "## nvim"
 echo "To install the nvim plugins, open up vim and type ':PlugInstall'\n"
 echo "## git"
 echo "Setup your git config like so:\ngit config --global user.email "josh.rubyist@gmail.com"\ngit config --global user.name "Josh Adams""
+
