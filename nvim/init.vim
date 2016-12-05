@@ -72,6 +72,11 @@ Plug 'fmoralesc/molokayo'
 Plug 'powerman/vim-plugin-AnsiEsc'
 
 """ Code Navigation #code-navigation
+" fzf fuzzy finder
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+  nnoremap <silent> <C-P> :FZF<cr>
+
 " Execute code checks, find mistakes, in the background
 Plug 'neomake/neomake'
   " Run Neomake when I save any buffer

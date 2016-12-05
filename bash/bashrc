@@ -132,3 +132,5 @@ eval "$(direnv hook bash)"
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
 #[[ -s "/home/jadams/.gvm/bin/gvm-init.sh" ]] && source "/home/jadams/.gvm/bin/gvm-init.sh"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
