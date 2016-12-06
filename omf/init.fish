@@ -22,7 +22,7 @@ function gpsom
 end
 
 function gcom
-  git checkout origin master
+  git checkout master
 end
 
 function gmom
