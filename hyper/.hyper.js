@@ -92,7 +92,8 @@ module.exports = {
     'hypercwd', // open new tabs in the same cwd as current tab
     'hyperlinks', // make links work like iTerm does
     'hyperterm-summon', // summon hyperterm, system-wide, with a hotkey
-    "hyperterm-paste", // make pasting nicer, and safer
+    'hyperterm-paste', // make pasting nicer, and safer
+    'hyperterm-title', // better tab titles
   ],
 
   // in development, you can create a directory under

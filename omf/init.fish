@@ -12,6 +12,21 @@ function drips
   cd ~/Dropbox\ \(DailyDrip\)/DailyDrip\ Content
 end
 
+# Adam's silly 'back' shortcut
+function b
+  pushd ..
+end
+
+function f
+  popd
+end
+
+### rails ##############
+function rdb
+  rake db:migrate
+end
+### end rails ##########
+
 ### git ################
 function gfo
   git fetch origin
@@ -19,6 +34,10 @@ end
 
 function gpsom
   git push origin master
+end
+
+function gco
+  git checkout $argv
 end
 
 function gcom
@@ -38,7 +57,7 @@ function ga
 end
 
 function gc
-  git commit -v
+  git commit -v $argv
 end
 ### end git ############
 

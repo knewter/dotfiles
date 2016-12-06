@@ -1,17 +1,19 @@
+scriptencoding utf-8
 " Josh's vim configuration (http://github.com/knewter/dotfiles)
 
 " Table of Contents
 " 1) Basics #basics
 "   1.1) Tabs #tabs
 "   1.2) Leader #leader
+"   1.3) Omni #omni
+"   1.4) UI Basics #ui-basics
 " 2) Plugins #plugins
 "   2.1) Filetypes #filetypes
 "   2.2) Utilities #utilities
 "   2.3) UI Plugins #ui-plugins
 "   2.4) Code Navigation #code-navigation
 " 3) UI Tweaks #ui-tweaks
-"   3.1) Line numbering #line-numbering
-"   3.2) Theme #theme
+"   3.1) Theme #theme
 
 """""""""""""" Basics #basics
 """ Tabs #tabs
@@ -23,13 +25,17 @@ set expandtab
 " - Indent by 2 spaces by default
 set shiftwidth=2
 
-""" Misc
-" set default encoding to UTF-8
-set encoding=utf-8
+""" Leader #leader
+" Use comma for leader
+let g:mapleader=','
+" Double backslash for local leader - FIXME: not sure I love this
+let g:maplocalleader='\\'
 
+""" omni #omni
 " enable omni syntax completion
 set omnifunc=syntaxcomplete#Complete
 
+""" UI Basics #ui-basics
 " turn off mouse
 set mouse=""
 
@@ -43,12 +49,28 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <silent> <BS> <C-w>h
+  " Have to add this because hyperterm sends backspace for C-h
 
-""" Leader #leader
-" Use comma for leader
-let g:mapleader=','
-" Double backslash for local leader - FIXME: not sure I love this
-let g:maplocalleader='\\'
+" NOTE: I stopped highlighting cursor position because it makes redrawing
+" super slow.
+" set cursorline
+" set cursorcolumn
+
+" Highlight search results
+set hlsearch
+" Incremental search, search as you type
+set incsearch
+" Ignore case when searching
+set ignorecase smartcase
+" Ignore case when searching lowercase
+set smartcase
+
+" Set the title of the iterm tab
+set title
+
+" Line numbering
+set number
+
 """""""""""""" End Basics
 
 """""""""""""" Plugins #plugins
@@ -75,12 +97,64 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   " use tab for completion
   inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
+" EditorConfig support
+Plug 'editorconfig/editorconfig-vim'
+
+" Jump between quicklist, location (syntastic, etc) items with ease, among other things
+Plug 'tpope/vim-unimpaired'
+
+" Line commenting
+Plug 'tomtom/tcomment_vim'
+  " By default, `gc` will toggle comments
+
+Plug 'janko-m/vim-test'                " Run tests with varying granularity
+  nmap <silent> <leader>t :TestNearest<CR>
+  nmap <silent> <leader>T :TestFile<CR>
+  nmap <silent> <leader>a :TestSuite<CR>
+  nmap <silent> <leader>l :TestLast<CR>
+  nmap <silent> <leader>g :TestVisit<CR>
+  " run tests in neovim strategy
+  let test#strategy = "neovim"
+
+" git support from dat tpope
+Plug 'tpope/vim-fugitive'
+
+" github support from dat tpope
+Plug 'tpope/vim-rhubarb'
+
+" vim interface to web apis.  Required for gist-vim
+Plug 'mattn/webapi-vim'
+
+" create gists trivially from buffer, selection, etc.
+Plug 'mattn/gist-vim'
+  let g:gist_open_browser_after_post = 1
+  let g:gist_detect_filetype = 2
+  let g:gist_post_private = 1
+  if has('macunix')
+    let g:gist_clip_command = 'pbcopy'
+  endif
+
+" visualize your undo tree
+Plug 'sjl/gundo.vim'
+  nnoremap <F5> :GundoToggle<CR>
+
 """ UI Plugins #ui-plugins
 " Molokai theme makes me cozy
 Plug 'tomasr/molokai'
 Plug 'fmoralesc/molokayo'
-" add ansi escape sequences
-Plug 'powerman/vim-plugin-AnsiEsc'
+" Try out the ayu theme - https://github.com/ayu-theme/ayu-vim
+Plug 'ayu-theme/ayu-vim'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+  let g:airline_theme= 'luna'
+  let g:bufferline_echo = 0
+  let g:airline_powerline_fonts=1
+  let g:airline_enable_branch=1
+  let g:airline_enable_syntastic=1
+  let g:airline_branch_prefix = '⎇ '
+  let g:airline_paste_symbol = '∥'
+  let g:airline#extensions#tabline#enabled = 0
 
 """ Code Navigation #code-navigation
 " fzf fuzzy finder
@@ -88,8 +162,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
   nnoremap <silent> <C-P> :FZF<cr>
   augroup localfzf
-    au FileType fzf :tnoremap <buffer> <c-j> <c-j>
-    au FileType fzf :tnoremap <buffer> <c-k> <c-k>
+    autocmd FileType fzf :tnoremap <buffer> <c-j> <c-j>
+    autocmd FileType fzf :tnoremap <buffer> <c-k> <c-k>
   augroup END
 
 " Execute code checks, find mistakes, in the background
@@ -131,94 +205,29 @@ Plug 'neomake/neomake'
 Plug 'ludovicchabant/vim-gutentags'
   let g:gutentags_cache_dir = '~/.tags_cache'
 
-
-Plug 'tpope/vim-vinegar' " navigate up a directory with '-' in netrw, among other things
-
-""""" Utilities ======================== #utilities
-" EditorConfig support
-Plug 'editorconfig/editorconfig-vim'
-
-" Jump between quicklist, location (syntastic, etc) items with ease, among other things
-Plug 'tpope/vim-unimpaired'
-
-" Line commenting
-Plug 'tomtom/tcomment_vim'
-  " By default, `gc` will toggle comments
-  "
-Plug 'janko-m/vim-test'                " Run tests with varying granularity
-  nmap <silent> <leader>t :TestNearest<CR>
-  nmap <silent> <leader>T :TestFile<CR>
-  nmap <silent> <leader>a :TestSuite<CR>
-  nmap <silent> <leader>l :TestLast<CR>
-  nmap <silent> <leader>g :TestVisit<CR>
-  " run tests in neovim strategy
-  let test#strategy = "neovim"
-
-" git support from dat tpope
-Plug 'tpope/vim-fugitive'
-
-" vim interface to web apis.  Required for gist-vim
-Plug 'mattn/webapi-vim'
-
-" create gists trivially from buffer, selection, etc.
-Plug 'mattn/gist-vim'
-  let g:gist_open_browser_after_post = 1
-  let g:gist_detect_filetype = 2
-  let g:gist_post_private = 1
-  if has('macunix')
-    let g:gist_clip_command = 'pbcopy'
-  endif
-
-" github support from dat tpope
-Plug 'tpope/vim-rhubarb'
-
-" visualize your undo tree
-Plug 'sjl/gundo.vim'
-  nnoremap <F5> :GundoToggle<CR>
-
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-  let g:airline_theme= 'luna'
-  let g:bufferline_echo = 0
-  let g:airline_powerline_fonts=1
-  let g:airline_enable_branch=1
-  let g:airline_enable_syntastic=1
-  let g:airline_branch_prefix = '⎇ '
-  let g:airline_paste_symbol = '∥'
-  let g:airline#extensions#tabline#enabled = 0
+" navigate up a directory with '-' in netrw, among other things
+Plug 'tpope/vim-vinegar'
 
 call plug#end()
 """""""""""""" End Plugins
 
 """""""""""""" UI Tweaks #ui-tweaks
-""" Line numbering #line-numbering
-set number
-
 """ Theme #theme
 if (empty($TMUX))
-  if (has("termguicolors"))
+  if (has('termguicolors'))
     set termguicolors
   endif
 endif
 set background=dark
+"set background=light
 syntax enable
 colorscheme molokai
 
-" hightlight cursor position
-set cursorline
-set cursorcolumn
-
-" Highlight search results
-set hlsearch
-" Incremental search, search as you type
-set incsearch
-" Ignore case when searching
-set ignorecase smartcase
-" Ignore case when searching lowercase
-set smartcase
-
-" Set the title of the iterm tab
-set title
+" Ayu theme config
+"let ayucolor="light"  " for light version of theme
+"let ayucolor="mirage" " for mirage version of theme
+"let ayucolor="dark"   " for dark version of theme
+"colorscheme ayu
 
 """ Keyboard
 " Remove highlights
@@ -254,39 +263,48 @@ set iskeyword+=-
 """ Auto Commands ====================== #auto-cmd
 """"" Filetypes ========================
 augroup erlang
-  au!
-  au BufNewFile,BufRead *.erl setlocal tabstop=4
-  au BufNewFile,BufRead *.erl setlocal shiftwidth=4
-  au BufNewFile,BufRead *.erl setlocal softtabstop=4
-  au BufNewFile,BufRead relx.config setlocal filetype=erlang
+  autocmd!
+  autocmd BufNewFile,BufRead *.erl setlocal tabstop=4
+  autocmd BufNewFile,BufRead *.erl setlocal shiftwidth=4
+  autocmd BufNewFile,BufRead *.erl setlocal softtabstop=4
+  autocmd BufNewFile,BufRead relx.config setlocal filetype=erlang
 augroup END
 
 augroup elm
-  au!
-  au BufNewFile,BufRead *.elm setlocal tabstop=4
-  au BufNewFile,BufRead *.elm setlocal shiftwidth=4
-  au BufNewFile,BufRead *.elm setlocal softtabstop=4
+  autocmd!
+  autocmd BufNewFile,BufRead *.elm setlocal tabstop=4
+  autocmd BufNewFile,BufRead *.elm setlocal shiftwidth=4
+  autocmd BufNewFile,BufRead *.elm setlocal softtabstop=4
 augroup END
 
 augroup dotenv
-  au!
-  au BufNewFile,BufRead *.envrc setlocal filetype=sh
+  autocmd!
+  autocmd BufNewFile,BufRead *.envrc setlocal filetype=sh
 augroup END
 
 augroup es6
-  au!
-  au BufNewFile,BufRead *.es6 setlocal filetype=javascript
-  au BufNewFile,BufRead *.es6.erb setlocal filetype=javascript
+  autocmd!
+  autocmd BufNewFile,BufRead *.es6 setlocal filetype=javascript
+  autocmd BufNewFile,BufRead *.es6.erb setlocal filetype=javascript
+augroup END
+
+augroup markdown
+  autocmd!
+  autocmd FileType markdown setlocal textwidth=80
+  autocmd FileType markdown setlocal formatoptions=t
 augroup END
 """"" End Filetypes ====================
 
 """"" Normalization ====================
 " Delete trailing white space on save
 func! DeleteTrailingWS()
-  exe "normal mz"
+  exe 'normal mz'
   %s/\s\+$//ge
-  exe "normal `z"
+  exe 'normal `z'
 endfunc
-au BufWrite * silent call DeleteTrailingWS()
+
+augroup whitespace
+  autocmd BufWrite * silent call DeleteTrailingWS()
+augroup END
 """"" End Normalization ================
 """ End Auto Commands ==================
