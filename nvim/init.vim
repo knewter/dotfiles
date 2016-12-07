@@ -4,9 +4,10 @@ scriptencoding utf-8
 " Table of Contents
 " 1) Basics #basics
 "   1.1) Tabs #tabs
-"   1.2) Leader #leader
-"   1.3) Omni #omni
-"   1.4) UI Basics #ui-basics
+"   1.2) Format Options #format-options
+"   1.3) Leader #leader
+"   1.4) Omni #omni
+"   1.5) UI Basics #ui-basics
 " 2) Plugins #plugins
 "   2.1) Filetypes #filetypes
 "   2.2) Utilities #utilities
@@ -25,6 +26,9 @@ set softtabstop=2
 set expandtab
 " - Indent by 2 spaces by default
 set shiftwidth=2
+
+""" Format Options #format-options
+set formatoptions=crq
 
 """ Leader #leader
 " Use space for leader
@@ -90,6 +94,11 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   " use tab for completion
   inoremap <expr><Tab> pumvisible() ? "\<c-n>" : "\<Tab>"
   inoremap <expr><S-Tab> pumvisible() ? "\<c-p>" : "\<S-Tab>"
+
+" Add comment textobjects (I really want to reformat comments without affecting
+" the next line of code)
+Plug 'kana/vim-textobj-user' | Plug 'glts/vim-textobj-comment'
+  " Example: Reformat a comment with `gqac` (ac is "a comment")
 
 " EditorConfig support
 Plug 'editorconfig/editorconfig-vim'
@@ -291,7 +300,13 @@ augroup END
 augroup markdown
   autocmd!
   autocmd FileType markdown setlocal textwidth=80
-  autocmd FileType markdown setlocal formatoptions=t
+  autocmd FileType markdown setlocal formatoptions=tcrq
+augroup END
+
+augroup viml
+  autocmd!
+  autocmd FileType vim setlocal textwidth=80
+  autocmd FileType vim setlocal formatoptions=tcrq
 augroup END
 """"" End Filetypes ====================
 
