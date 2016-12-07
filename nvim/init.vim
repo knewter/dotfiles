@@ -79,6 +79,7 @@ call plug#begin()
 """ Filetypes #filetypes
 " Polyglot loads language support on demand!
 Plug 'sheerun/vim-polyglot'
+  let g:polyglot_disabled = ['elm']
 
 " Elixir
 Plug 'slashmili/alchemist.vim'
@@ -87,6 +88,9 @@ Plug 'slashmili/alchemist.vim'
 Plug 'c-brenn/phoenix.vim'
 Plug 'tpope/vim-projectionist' " required for some navigation features
 
+" Elm
+Plug 'ElmCast/elm-vim'
+  let g:elm_format_autosave = 1
 
 """ Utilities #utilities
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -95,7 +99,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     let g:deoplete#omni#input_patterns = {}
   endif
   " use tab for completion
-  inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+  inoremap <expr><Tab> pumvisible() ? "\<c-n>" : "\<Tab>"
+  inoremap <expr><S-Tab> pumvisible() ? "\<c-p>" : "\<S-Tab>"
 
 " EditorConfig support
 Plug 'editorconfig/editorconfig-vim'
@@ -114,7 +119,9 @@ Plug 'janko-m/vim-test'                " Run tests with varying granularity
   nmap <silent> <leader>l :TestLast<CR>
   nmap <silent> <leader>g :TestVisit<CR>
   " run tests in neovim strategy
-  let test#strategy = "neovim"
+  let g:test#strategy = 'neovim'
+  " I use spinach, not cucumber!
+  let g:test#ruby#cucumber#executable = 'spinach'
 
 " git support from dat tpope
 Plug 'tpope/vim-fugitive'

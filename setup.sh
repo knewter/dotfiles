@@ -13,7 +13,7 @@ ln -sf `pwd`/bin/list-terminal-colors ~/bin/list-terminal-colors
 ln -sf `pwd`/bin/subcount ~/bin/subcount
 
 # hyper
-ln -sf `pwd`/hyper/.hyper.js ~/.hyper.js
+ln -sf `pwd`/hyper/hyper.js ~/.hyper.js
 
 # Plug (to be used with nvim)
 # https://github.com/junegunn/vim-plug

@@ -59,6 +59,11 @@ end
 function gc
   git commit -v $argv
 end
+
+# delete local branches that have been merged into master
+function git_clean
+  git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d
+end
 ### end git ############
 
 function servedir
