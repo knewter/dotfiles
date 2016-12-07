@@ -45,7 +45,7 @@ function gcom
 end
 
 function gmom
-  git merge origin master
+  git merge origin/master
 end
 
 function gs
