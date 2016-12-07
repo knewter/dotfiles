@@ -156,10 +156,12 @@ Plug 'vim-airline/vim-airline-themes'
 " fzf fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+  let g:fzf_layout = { 'window': 'enew' }
   nnoremap <silent> <C-P> :FZF<cr>
   augroup localfzf
-    autocmd FileType fzf :tnoremap <buffer> <c-j> <c-j>
-    autocmd FileType fzf :tnoremap <buffer> <c-k> <c-k>
+    autocmd!
+    autocmd FileType fzf :tnoremap <buffer> <C-J> <C-J>
+    autocmd FileType fzf :tnoremap <buffer> <C-K> <C-K>
   augroup END
 
 " Execute code checks, find mistakes, in the background
@@ -237,8 +239,10 @@ map <Up>    :echo "no!"<cr>
 map <Down>  :echo "no!"<cr>
 
 " Custom split opening / closing behaviour
-map <C-N> :vsp .<CR>
+map <C-N> :vsp<CR><C-P>
 map <C-C> :q<CR>
+" Custom tab opening behaviour
+map <leader>n :tabnew .<CR><C-P>
 
 " reselect pasted content:
 noremap gV `[v`]
