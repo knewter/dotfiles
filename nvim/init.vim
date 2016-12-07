@@ -14,6 +14,7 @@ scriptencoding utf-8
 "   2.4) Code Navigation #code-navigation
 " 3) UI Tweaks #ui-tweaks
 "   3.1) Theme #theme
+" 4) Navigation #navigation
 
 """""""""""""" Basics #basics
 """ Tabs #tabs
@@ -26,8 +27,8 @@ set expandtab
 set shiftwidth=2
 
 """ Leader #leader
-" Use comma for leader
-let g:mapleader=','
+" Use space for leader
+let g:mapleader=' '
 " Double backslash for local leader - FIXME: not sure I love this
 let g:maplocalleader='\\'
 
@@ -38,18 +39,6 @@ set omnifunc=syntaxcomplete#Complete
 """ UI Basics #ui-basics
 " turn off mouse
 set mouse=""
-
-" Navigate with C-h,j,k,l
-tnoremap <C-h> <C-\><C-n><C-w>h
-tnoremap <C-j> <C-\><C-n><C-w>j
-tnoremap <C-k> <C-\><C-n><C-w>k
-tnoremap <C-l> <C-\><C-n><C-w>l
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <silent> <BS> <C-w>h
-  " Have to add this because hyperterm sends backspace for C-h
 
 " NOTE: I stopped highlighting cursor position because it makes redrawing
 " super slow.
@@ -239,7 +228,7 @@ colorscheme molokai
 """ Keyboard
 " Remove highlights
 " Clear the search buffer when hitting return
-nnoremap <cr> :nohlsearch<cr>
+nnoremap <silent> <cr> :nohlsearch<cr>
 
 " NO ARROW KEYS COME ON
 map <Left>  :echo "no!"<cr>
@@ -315,3 +304,25 @@ augroup whitespace
 augroup END
 """"" End Normalization ================
 """ End Auto Commands ==================
+
+""" Navigation ====================== #navigation
+" Navigate terminal with C-h,j,k,l
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
+
+" Navigate splits with C-h,j,k,l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <silent> <BS> <C-w>h
+  " Have to add this because hyperterm sends backspace for C-h
+
+" Navigate tabs with leader+h,l
+" It's hard to hit space and h/l simultaneously so increase the timeout for
+" space
+nnoremap <leader>h :tabprev<cr>
+nnoremap <leader>l :tabnext<cr>
+""" End Navigation ==================
