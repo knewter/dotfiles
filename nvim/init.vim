@@ -29,6 +29,7 @@ set shiftwidth=2
 
 """ Format Options #format-options
 set formatoptions=tcrq
+set textwidth=80
 
 """ Leader #leader
 " Use space for leader

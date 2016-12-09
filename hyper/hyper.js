@@ -90,7 +90,7 @@ module.exports = {
     'hyper-no-close', // remove close button in tabs
     'hyperchart', // charts
     'hypercwd', // open new tabs in the same cwd as current tab
-    'hyperlinks', // make links work like iTerm does
+    'hyperlinks-iterm', // make links work like iTerm does
     'hyperterm-summon', // summon hyperterm, system-wide, with a hotkey
     'hyperterm-title', // better tab titles
     'hyperterm-paste', // make pasting nicer, and safer
