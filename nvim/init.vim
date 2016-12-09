@@ -28,7 +28,7 @@ set expandtab
 set shiftwidth=2
 
 """ Format Options #format-options
-set formatoptions=crq
+set formatoptions=tcrq
 
 """ Leader #leader
 " Use space for leader
@@ -63,6 +63,18 @@ set title
 
 " Line numbering
 set number
+
+""" Undo #undo
+" undofile - This allows you to use undos after exiting and restarting
+" This, like swap and backups, uses .vim-undo first, then ~/.vim/undo
+" :help undo-persistence
+" This is only present in 7.3+
+if isdirectory($HOME . '/.config/nvim/undo') == 0
+  :silent !mkdir -p ~/.config/nvim/undo > /dev/null 2>&1
+endif
+set undodir=./.vim-undo//
+set undodir+=~/.vim/undo//
+set undofile
 
 """""""""""""" End Basics
 
@@ -167,11 +179,15 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
   let g:fzf_layout = { 'window': 'enew' }
   nnoremap <silent> <C-P> :FZF<cr>
+  nnoremap <silent> <leader>a :Ag<cr>
   augroup localfzf
     autocmd!
     autocmd FileType fzf :tnoremap <buffer> <C-J> <C-J>
     autocmd FileType fzf :tnoremap <buffer> <C-K> <C-K>
   augroup END
+
+" Open files where you last left them
+Plug 'dietsche/vim-lastplace'
 
 " Execute code checks, find mistakes, in the background
 Plug 'neomake/neomake'
