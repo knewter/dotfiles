@@ -89,6 +89,9 @@ Plug 'sheerun/vim-polyglot'
 
 " Elixir
 Plug 'slashmili/alchemist.vim'
+Plug 'elixir-lang/vim-elixir'
+Plug 'thinca/vim-ref'
+Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
 
 " Phoenix
 Plug 'c-brenn/phoenix.vim'
