@@ -31,10 +31,14 @@ set shiftwidth=2
 set formatoptions=tcrq
 set textwidth=80
 
+""" Handling backup copies
+" make a copy of the file and overwrite the original one
+set backupcopy=yes
+
 """ Leader #leader
 " Use space for leader
 let g:mapleader=' '
-" Double backslash for local leader - FIXME: not sure I love this
+" Double backslash for local leader
 let g:maplocalleader='\\'
 
 """ omni #omni
@@ -85,10 +89,14 @@ call plug#begin()
 """ Filetypes #filetypes
 " Polyglot loads language support on demand!
 Plug 'sheerun/vim-polyglot'
-  let g:polyglot_disabled = ['elm']
+  let g:polyglot_disabled = ['elm', 'elixir']
 
 " Elixir
+Plug 'elixir-lang/vim-elixir'
 Plug 'slashmili/alchemist.vim'
+""" Add support for ANSI colors - this has variously been necessary and caused
+""" problems, no clue what's up there...
+  Plug 'powerman/vim-plugin-AnsiEsc'
 
 " Phoenix
 Plug 'c-brenn/phoenix.vim'
@@ -97,16 +105,39 @@ Plug 'tpope/vim-projectionist' " required for some navigation features
 " Elm
 Plug 'ElmCast/elm-vim'
   let g:elm_format_autosave = 1
+  let g:elm_detailed_complete = 1
+  let g:elm_syntastic_show_warnings = 1
+  let g:elm_format_fail_silently = 1
+  let g:elm_browser_command = 'open'
+  let g:elm_make_show_warnings = 1
+  let g:elm_setup_keybindings = 1
+
+" Markdown
+function! NpmInstallAndUpdateRemotePlugins(info)
+  !npm install
+  UpdateRemotePlugins
+endfunction
+Plug 'neovim/node-host', { 'do': function('NpmInstallAndUpdateRemotePlugins') }
+Plug 'vimlab/mdown.vim', { 'do': function('NpmInstallAndUpdateRemotePlugins') }
 
 """ Utilities #utilities
+Plug 'bogado/file-line'
+
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   let g:deoplete#enable_at_startup = 1
-  if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
-  endif
-  " use tab for completion
-  inoremap <expr><Tab> pumvisible() ? "\<c-n>" : "\<Tab>"
-  inoremap <expr><S-Tab> pumvisible() ? "\<c-p>" : "\<S-Tab>"
+  let g:deoplete#sources = {}
+  let g:deoplete#sources._ = ['file', 'neosnippet']
+  let g:deoplete#omni#functions = {}
+  let g:deoplete#omni#input_patterns = {}
+
+  " Elm support
+  " h/t https://github.com/ElmCast/elm-vim/issues/52#issuecomment-264161975
+  let g:deoplete#sources.elm = ['omni'] + g:deoplete#sources._
+  let g:deoplete#omni#functions.elm = ['elm#Complete']
+  let g:deoplete#omni#input_patterns.elm = '[^ \t]+'
+  let g:deoplete#disable_auto_complete = 1
+
+Plug 'ervandew/supertab'
 
 " Add comment textobjects (I really want to reformat comments without affecting
 " the next line of code)
@@ -129,10 +160,19 @@ Plug 'janko-m/vim-test'                " Run tests with varying granularity
   nmap <silent> <leader>a :TestSuite<CR>
   nmap <silent> <leader>l :TestLast<CR>
   nmap <silent> <leader>g :TestVisit<CR>
-  " run tests in neovim strategy
-  let g:test#strategy = 'neovim'
+  " run tests in neoterm
+  let g:test#strategy = 'neoterm'
   " I use spinach, not cucumber!
   let g:test#ruby#cucumber#executable = 'spinach'
+
+" Asynchronous file linter
+Plug 'w0rp/ale'
+  " wait a bit before checking syntax in a file, if typing
+  let g:ale_lint_delay = 5000
+  " Use global eslint
+  let g:ale_javascript_eslint_use_global = 1
+  " Only use es6 for js
+  let g:ale_linters = {'javascript': ['eslint']}
 
 " git support from dat tpope
 Plug 'tpope/vim-fugitive'
@@ -156,6 +196,30 @@ Plug 'mattn/gist-vim'
 Plug 'sjl/gundo.vim'
   nnoremap <F5> :GundoToggle<CR>
 
+" org-mode
+Plug 'jceb/vim-orgmode'
+  let g:org_agenda_files = ['~/org/index.org']
+  let g:org_export_emacs = '/usr/local/bin/emacs'
+  let g:org_export_verbose = 1
+
+" universal text linking
+Plug 'vim-scripts/utl.vim'
+
+" allow portions of a file to use different syntax
+Plug 'vim-scripts/SyntaxRange'
+
+" increment dates like other items
+Plug 'tpope/vim-speeddating'
+
+" calendar application
+Plug 'itchyny/calendar.vim'
+  let g:calendar_google_calendar = 1
+  let g:calendar_google_task = 1
+
+" nicer api for neovim terminal
+Plug 'kassio/neoterm'
+
+
 """ UI Plugins #ui-plugins
 " Molokai theme makes me cozy
 Plug 'tomasr/molokai'
@@ -165,7 +229,8 @@ Plug 'ayu-theme/ayu-vim'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-  let g:airline_theme= 'luna'
+  let g:airline_theme = 'luna'
+  "let g:airline_theme = 'lucius'
   let g:bufferline_echo = 0
   let g:airline_powerline_fonts=1
   let g:airline_enable_branch=1
@@ -185,45 +250,50 @@ Plug 'junegunn/fzf.vim'
     autocmd!
     autocmd FileType fzf :tnoremap <buffer> <C-J> <C-J>
     autocmd FileType fzf :tnoremap <buffer> <C-K> <C-K>
+    autocmd VimEnter * command! -bang -nargs=* Ag
+      \ call fzf#vim#ag(<q-args>,
+      \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+      \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+      \                 <bang>0)
   augroup END
 
 " Open files where you last left them
 Plug 'dietsche/vim-lastplace'
 
 " Execute code checks, find mistakes, in the background
-Plug 'neomake/neomake'
-  " Run Neomake when I save any buffer
-  augroup localneomake
-    autocmd! BufWritePost * Neomake
-  augroup END
-  " Don't tell me to use smartquotes in markdown ok?
-  let g:neomake_markdown_enabled_makers = []
-
-  " Configure a nice credo setup, courtesy https://github.com/neomake/neomake/pull/300
-  let g:neomake_elixir_enabled_makers = ['mix', 'mycredo']
-  function! NeomakeCredoErrorType(entry)
-    if a:entry.type ==# 'F'      " Refactoring opportunities
-      let l:type = 'W'
-    elseif a:entry.type ==# 'D'  " Software design suggestions
-      let l:type = 'I'
-    elseif a:entry.type ==# 'W'  " Warnings
-      let l:type = 'W'
-    elseif a:entry.type ==# 'R'  " Readability suggestions
-      let l:type = 'I'
-    elseif a:entry.type ==# 'C'  " Convention violation
-      let l:type = 'W'
-    else
-      let l:type = 'M'           " Everything else is a message
-    endif
-    let a:entry.type = l:type
-  endfunction
-
-  let g:neomake_elixir_mycredo_maker = {
-        \ 'exe': 'mix',
-        \ 'args': ['credo', 'list', '%:p', '--format=oneline'],
-        \ 'errorformat': '[%t] %. %f:%l:%c %m,[%t] %. %f:%l %m',
-        \ 'postprocess': function('NeomakeCredoErrorType')
-        \ }
+" Plug 'neomake/neomake'
+"   " Run Neomake when I save any buffer
+"   augroup localneomake
+"     autocmd! BufWritePost * Neomake
+"   augroup END
+"   " Don't tell me to use smartquotes in markdown ok?
+"   let g:neomake_markdown_enabled_makers = []
+"
+"   " Configure a nice credo setup, courtesy https://github.com/neomake/neomake/pull/300
+"   let g:neomake_elixir_enabled_makers = ['mix', 'mycredo']
+"   function! NeomakeCredoErrorType(entry)
+"     if a:entry.type ==# 'F'      " Refactoring opportunities
+"       let l:type = 'W'
+"     elseif a:entry.type ==# 'D'  " Software design suggestions
+"       let l:type = 'I'
+"     elseif a:entry.type ==# 'W'  " Warnings
+"       let l:type = 'W'
+"     elseif a:entry.type ==# 'R'  " Readability suggestions
+"       let l:type = 'I'
+"     elseif a:entry.type ==# 'C'  " Convention violation
+"       let l:type = 'W'
+"     else
+"       let l:type = 'M'           " Everything else is a message
+"     endif
+"     let a:entry.type = l:type
+"   endfunction
+"
+"   let g:neomake_elixir_mycredo_maker = {
+"         \ 'exe': 'mix',
+"         \ 'args': ['credo', 'list', '%:p', '--format=oneline'],
+"         \ 'errorformat': '[%t] %. %f:%l:%c %m,[%t] %. %f:%l %m',
+"         \ 'postprocess': function('NeomakeCredoErrorType')
+"         \ }
 
 " Easily manage tags files
 Plug 'ludovicchabant/vim-gutentags'
@@ -232,8 +302,17 @@ Plug 'ludovicchabant/vim-gutentags'
 " navigate up a directory with '-' in netrw, among other things
 Plug 'tpope/vim-vinegar'
 
+" vifm file manager as the default vim file management tool
+" Plug 'vifm/neovim-vifm'
+" NOTE: I don't get highlighting with this and it's hard to see where the
+" selection is
+
 call plug#end()
+
+"" Plugin configuration that has to run after plug#end
+
 """""""""""""" End Plugins
+
 
 """""""""""""" UI Tweaks #ui-tweaks
 """ Theme #theme
@@ -250,8 +329,8 @@ colorscheme molokai
 " Ayu theme config
 "let ayucolor="light"  " for light version of theme
 "let ayucolor="mirage" " for mirage version of theme
-"let ayucolor="dark"   " for dark version of theme
-"colorscheme ayu
+" let ayucolor="dark"   " for dark version of theme
+" colorscheme ayu
 
 """ Keyboard
 " Remove highlights
@@ -287,6 +366,41 @@ map ,, <C-^>
 set iskeyword+=-
 
 """ Auto Commands ====================== #auto-cmd
+
+" A helper function to restore cursor position, window position, and last search
+" after running a command.  From:
+" http://stackoverflow.com/questions/15992163/how-to-tell-vim-to-auto-indent-before-saving
+function! Preserve(command)
+  " Save the last search.
+  let search = @/
+
+  " Save the current cursor position.
+  let cursor_position = getpos('.')
+
+  " Save the current window position.
+  normal! H
+  let window_position = getpos('.')
+  call setpos('.', cursor_position)
+
+  " Execute the command.
+  execute a:command
+
+  " Restore the last search.
+  let @/ = search
+
+  " Restore the previous window position.
+  call setpos('.', window_position)
+  normal! zt
+
+  " Restore the previous cursor position.
+  call setpos('.', cursor_position)
+endfunction
+
+" Re-indent the whole buffer.
+function! Indent()
+  call Preserve('normal gg=G')
+endfunction
+
 """"" Filetypes ========================
 augroup erlang
   autocmd!
@@ -294,6 +408,17 @@ augroup erlang
   autocmd BufNewFile,BufRead *.erl setlocal shiftwidth=4
   autocmd BufNewFile,BufRead *.erl setlocal softtabstop=4
   autocmd BufNewFile,BufRead relx.config setlocal filetype=erlang
+augroup END
+
+augroup elixir
+  autocmd!
+  " autocmd BufWritePre *.ex call Indent()
+  " autocmd BufWritePre *.exs call Indent()
+  "
+  " Sadly, I can't enable auto-indent for elixir because it messes up my heredoc
+  " indentation for code sections and it has a couple of other issues :(
+  autocmd BufNewFile,BufRead *.ex setlocal formatoptions=tcrq
+  autocmd BufNewFile,BufRead *.exs setlocal formatoptions=tcrq
 augroup END
 
 augroup elm
@@ -318,6 +443,7 @@ augroup markdown
   autocmd!
   autocmd FileType markdown setlocal textwidth=80
   autocmd FileType markdown setlocal formatoptions=tcrq
+  autocmd FileType markdown setlocal spell spelllang=en
 augroup END
 
 augroup viml

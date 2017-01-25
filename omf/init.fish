@@ -1,4 +1,4 @@
-set -x PATH $HOME/bin/ $PATH
+set -x PATH $HOME/bin/ $HOME/.cargo/bin $PATH
 set -x EDITOR nvim
 set -x CUCUMBER_FORMAT pretty
 # fzf will ignore files
@@ -9,7 +9,7 @@ source ~/.fishmarks/marks.fish
 
 # Go to dailydrip content
 function drips
-  cd ~/Dropbox\ \(DailyDrip\)/DailyDrip\ Content
+  cd ~/Google\ Drive/Daily\ Drip/Content/
 end
 
 # Adam's silly 'back' shortcut
@@ -75,7 +75,7 @@ function fs
 end
 
 function elmloc
-  find . -name '\''*.elm'\'' | grep -v elm-stuff | xargs cloc
+  find . -name \*.elm | grep -v elm-stuff | xargs cloc
 end
 
 function vim
@@ -85,6 +85,10 @@ end
 function ctags
   set brew_prefix (brew --prefix)
   eval $brew_prefix/bin/ctags $argv
+end
+
+function randomPassword
+  openssl rand -base64 30
 end
 
 eval (direnv hook fish)

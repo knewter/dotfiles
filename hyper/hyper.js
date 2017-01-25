@@ -54,6 +54,7 @@ module.exports = {
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
     // if left empty, your system's login shell will be used by default
+    //shell: '',
     shell: '/usr/local/bin/fish',
 
     // for setting shell arguments (i.e. for using interactive shellArgs: ['-i'])
@@ -93,7 +94,7 @@ module.exports = {
     'hyperlinks-iterm', // make links work like iTerm does
     'hyperterm-summon', // summon hyperterm, system-wide, with a hotkey
     'hyperterm-title', // better tab titles
-    'hyperterm-paste', // make pasting nicer, and safer
+    //'hyperterm-paste', // make pasting nicer, and safer
   ],
 
   // in development, you can create a directory under
