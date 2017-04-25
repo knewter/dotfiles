@@ -89,7 +89,17 @@ call plug#begin()
 """ Filetypes #filetypes
 " Polyglot loads language support on demand!
 Plug 'sheerun/vim-polyglot'
-  let g:polyglot_disabled = ['elm', 'elixir']
+  let g:polyglot_disabled = ['elm']
+
+" HTML / JS / CSS
+Plug 'othree/html5.vim'
+Plug 'html-improved-indentation'
+Plug 'pangloss/vim-javascript'
+Plug 'flowtype/vim-flow'
+Plug 'wokalski/autocomplete-flow'
+" For func argument completion
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 
 " Elixir
 Plug 'elixir-lang/vim-elixir'
@@ -112,6 +122,9 @@ Plug 'ElmCast/elm-vim'
   let g:elm_make_show_warnings = 1
   let g:elm_setup_keybindings = 1
 
+" Fuse
+Plug 'BeeWarloc/vim-fuse'
+
 " Markdown
 function! NpmInstallAndUpdateRemotePlugins(info)
   !npm install
@@ -122,6 +135,9 @@ Plug 'vimlab/mdown.vim', { 'do': function('NpmInstallAndUpdateRemotePlugins') }
 
 """ Utilities #utilities
 Plug 'bogado/file-line'
+
+" Easily toggle quickfix and locations lists with <leader>l and <leader>q
+Plug 'milkypostman/vim-togglelist'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   let g:deoplete#enable_at_startup = 1
@@ -226,13 +242,16 @@ Plug 'tomasr/molokai'
 Plug 'fmoralesc/molokayo'
 " Try out the ayu theme - https://github.com/ayu-theme/ayu-vim
 Plug 'ayu-theme/ayu-vim'
+" Solarized - variant with specific terminal support
+Plug 'lifepillar/vim-solarized8'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-  let g:airline_theme = 'luna'
+  "let g:airline_theme = 'luna'
   "let g:airline_theme = 'lucius'
+  let g:airline_theme = 'solarized'
   let g:bufferline_echo = 0
-  let g:airline_powerline_fonts=1
+  let g:airline_powerline_fonts=0
   let g:airline_enable_branch=1
   let g:airline_enable_syntastic=1
   let g:airline_branch_prefix = '⎇ '
@@ -324,13 +343,15 @@ endif
 set background=dark
 "set background=light
 syntax enable
-colorscheme molokai
+"colorscheme molokai
 
 " Ayu theme config
 "let ayucolor="light"  " for light version of theme
 "let ayucolor="mirage" " for mirage version of theme
 " let ayucolor="dark"   " for dark version of theme
 " colorscheme ayu
+colorscheme solarized8_light_flat
+"colorscheme solarized8_dark_flat
 
 """ Keyboard
 " Remove highlights
@@ -410,16 +431,16 @@ augroup erlang
   autocmd BufNewFile,BufRead relx.config setlocal filetype=erlang
 augroup END
 
-augroup elixir
-  autocmd!
-  " autocmd BufWritePre *.ex call Indent()
-  " autocmd BufWritePre *.exs call Indent()
-  "
-  " Sadly, I can't enable auto-indent for elixir because it messes up my heredoc
-  " indentation for code sections and it has a couple of other issues :(
-  autocmd BufNewFile,BufRead *.ex setlocal formatoptions=tcrq
-  autocmd BufNewFile,BufRead *.exs setlocal formatoptions=tcrq
-augroup END
+" augroup elixir
+"   autocmd!
+"   " autocmd BufWritePre *.ex call Indent()
+"   " autocmd BufWritePre *.exs call Indent()
+"   "
+"   " Sadly, I can't enable auto-indent for elixir because it messes up my heredoc
+"   " indentation for code sections and it has a couple of other issues :(
+"   autocmd BufNewFile,BufRead *.ex setlocal formatoptions=tcrq
+"   autocmd BufNewFile,BufRead *.exs setlocal formatoptions=tcrq
+" augroup END
 
 augroup elm
   autocmd!

@@ -1,8 +1,12 @@
 set -x PATH $HOME/bin/ $HOME/.cargo/bin $PATH
+set -x ANDROID_HOME /Users/jadams/Library/Android/sdk
+set -x PATH $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $PATH
+set -x PATH /usr/local/Cellar/node/7.7.2/bin $PATH
 set -x EDITOR nvim
 set -x CUCUMBER_FORMAT pretty
 # fzf will ignore files
 set -x FZF_DEFAULT_COMMAND 'ag -g ""'
+set -x NVM_DIR ~/.nvm
 
 # Load fishmarks (http://github.com/techwizrd/fishmarks)
 source ~/.fishmarks/marks.fish
