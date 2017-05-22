@@ -134,10 +134,18 @@ Plug 'neovim/node-host', { 'do': function('NpmInstallAndUpdateRemotePlugins') }
 Plug 'vimlab/mdown.vim', { 'do': function('NpmInstallAndUpdateRemotePlugins') }
 
 """ Utilities #utilities
+" Enable opening a file to a given line with file:lineno
 Plug 'bogado/file-line'
+
+" Vim wiki :)
+Plug 'vimwiki/vimwiki'
+  let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 " Easily toggle quickfix and locations lists with <leader>l and <leader>q
 Plug 'milkypostman/vim-togglelist'
+
+" Reformat source code
+Plug 'sbdchd/neoformat'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   let g:deoplete#enable_at_startup = 1
@@ -472,6 +480,11 @@ augroup viml
   autocmd FileType vim setlocal textwidth=80
   autocmd FileType vim setlocal formatoptions=tcrq
 augroup END
+
+augroup js
+  autocmd BufWritePre *.js Neoformat
+augroup END
+
 """"" End Filetypes ====================
 
 """"" Normalization ====================
@@ -504,8 +517,6 @@ nnoremap <silent> <BS> <C-w>h
   " Have to add this because hyperterm sends backspace for C-h
 
 " Navigate tabs with leader+h,l
-" It's hard to hit space and h/l simultaneously so increase the timeout for
-" space
 nnoremap <leader>h :tabprev<cr>
 nnoremap <leader>l :tabnext<cr>
 """ End Navigation ==================
