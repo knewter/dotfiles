@@ -93,7 +93,7 @@ Plug 'sheerun/vim-polyglot'
 
 " HTML / JS / CSS
 Plug 'othree/html5.vim'
-Plug 'html-improved-indentation'
+Plug 'vim-scripts/html-improved-indentation'
 Plug 'pangloss/vim-javascript'
 Plug 'flowtype/vim-flow'
 Plug 'wokalski/autocomplete-flow'
