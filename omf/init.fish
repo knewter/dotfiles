@@ -1,12 +1,22 @@
+eval (direnv hook fish)
+
 set -x PATH $HOME/bin/ $HOME/.cargo/bin $PATH
+set -x PATH /usr/local/opt/openssl/bin $PATH
 set -x ANDROID_HOME /Users/jadams/Library/Android/sdk
 set -x PATH $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $PATH
-set -x PATH /usr/local/Cellar/node/7.7.2/bin $PATH
+set -x GOPATH $HOME/go
+set -x PATH $PATH $GOPATH"/bin"
 set -x EDITOR nvim
 set -x CUCUMBER_FORMAT pretty
+# Sigh yarn bins go somewhere weird, let's put them in the path anyway
+set -x PATH $PATH $HOME"/.config/yarn/global/node_modules/.bin"
 # fzf will ignore files
 set -x FZF_DEFAULT_COMMAND 'ag -g ""'
 set -x NVM_DIR ~/.nvm
+set -x TNS_ADMIN ~/oracle
+
+# Load personal fish config (secrets and whatnot)
+source ~/.private.fish
 
 # Load fishmarks (http://github.com/techwizrd/fishmarks)
 source ~/.fishmarks/marks.fish
@@ -23,6 +33,10 @@ end
 
 function f
   popd
+end
+
+function flushdns
+  sudo dscacheutil -flushcache
 end
 
 ### rails ##############
@@ -95,6 +109,29 @@ function randomPassword
   openssl rand -base64 30
 end
 
-eval (direnv hook fish)
-source ~/.asdf/asdf.fish
+function dlog
+  aws ecr get-login --no-include-email --region us-west-2 | bash
+end
+
+# source ~/.asdf/asdf.fish
+# Uncomment the next line to have /usr/local/bin override asdf shims
+#set -x PATH /usr/local/bin $PATH
 source ~/.fzf/shell/key-bindings.fish
+
+# Load perlbrew.fish
+#source ~/perl5/perlbrew/etc/perlbrew.fish
+
+function cbuild
+  eval 'watchmedo shell-command --patterns="*.py;*.qss" --recursive --command='"'"'echo "" && osascript -e "quit app \"Python\"" && python3 main.py'"'"
+end
+
+function ctest
+  eval 'watchmedo shell-command --patterns="*.py;*.qss" --recursive --command='"'"'echo "" && python3 -m pytest'"'"
+end
+
+function ccov
+  eval 'watchmedo shell-command --patterns="*.py;*.qss" --recursive --command='"'"'echo "" && python3 -m pytest --cov=. --cov-report term-missing'"'"
+end
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/jadams/software/google-cloud-sdk/path.fish.inc' ]; if type source > /dev/null; source '/Users/jadams/software/google-cloud-sdk/path.fish.inc'; else; . '/Users/jadams/software/google-cloud-sdk/path.fish.inc'; end; end

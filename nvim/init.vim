@@ -95,18 +95,87 @@ Plug 'sheerun/vim-polyglot'
 Plug 'othree/html5.vim'
 Plug 'html-improved-indentation'
 Plug 'pangloss/vim-javascript'
-Plug 'flowtype/vim-flow'
+  let g:javascript_plugin_flow = 1
+Plug 'mxw/vim-jsx'
+  let g:jsx_ext_required = 0
+
+"Plug 'flowtype/vim-flow'
+Plug 'carlosrocha/vim-flow-plus'
 Plug 'wokalski/autocomplete-flow'
 " For func argument completion
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
+" Automatically imports missing JS dependencies and removes unused ones.
+Plug 'karthikv/tradeship-vim'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
+  "
+  " ## vim-prettier configuration ##
+  "
+  " max line length that prettier will wrap on
+  " Prettier default: 80
+  let g:prettier#config#print_width = 80
+
+  " number of spaces per indentation level
+  " Prettier default: 2
+  let g:prettier#config#tab_width = 2
+
+  " use tabs over spaces
+  " Prettier default: false
+  let g:prettier#config#use_tabs = 'false'
+  let g:prettier#autoformat = 0
+  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.graphql PrettierAsync
+
+  " print semicolons
+  " Prettier default: true
+  let g:prettier#config#semi = 'true'
+
+  " single quotes over double quotes
+  " Prettier default: false
+  let g:prettier#config#single_quote = 'true'
+
+  " print spaces between brackets
+  " Prettier default: true
+  let g:prettier#config#bracket_spacing = 'true'
+
+  " put > on the last line instead of new line
+  " Prettier default: false
+  let g:prettier#config#jsx_bracket_same_line = 'false'
+
+  " avoid|always
+  " Prettier default: avoid
+  let g:prettier#config#arrow_parens = 'avoid'
+
+  " none|es5|all
+  " Prettier default: none
+  let g:prettier#config#trailing_comma = 'none'
+
+  " flow|babylon|typescript|css|less|scss|json|graphql|markdown
+  " Prettier default: babylon
+  let g:prettier#config#parser = 'flow'
+
+  " cli-override|file-override|prefer-file
+  let g:prettier#config#config_precedence = 'prefer-file'
+
+  " always|never|preserve
+  let g:prettier#config#prose_wrap = 'preserve'
 
 " Elixir
 Plug 'elixir-lang/vim-elixir'
 Plug 'slashmili/alchemist.vim'
+Plug 'mhinz/vim-mix-format'
+  let g:mix_format_on_save = 0
+  let g:mix_format_options = '--check-equivalent'
+
 """ Add support for ANSI colors - this has variously been necessary and caused
 """ problems, no clue what's up there...
   Plug 'powerman/vim-plugin-AnsiEsc'
+
+" sh
+" Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
+"   let g:shfmt_fmt_on_save = 1
+"   let g:shfmt_extra_args = '-i 2'
 
 " Phoenix
 Plug 'c-brenn/phoenix.vim'
@@ -117,7 +186,7 @@ Plug 'ElmCast/elm-vim'
   let g:elm_format_autosave = 1
   let g:elm_detailed_complete = 1
   let g:elm_syntastic_show_warnings = 1
-  let g:elm_format_fail_silently = 1
+  let g:elm_format_fail_silently = 0
   let g:elm_browser_command = 'open'
   let g:elm_make_show_warnings = 1
   let g:elm_setup_keybindings = 1
@@ -131,7 +200,7 @@ function! NpmInstallAndUpdateRemotePlugins(info)
   UpdateRemotePlugins
 endfunction
 Plug 'neovim/node-host', { 'do': function('NpmInstallAndUpdateRemotePlugins') }
-Plug 'vimlab/mdown.vim', { 'do': function('NpmInstallAndUpdateRemotePlugins') }
+" Plug 'vimlab/mdown.vim', { 'do': function('NpmInstallAndUpdateRemotePlugins') }
 
 """ Utilities #utilities
 " Enable opening a file to a given line with file:lineno
@@ -140,6 +209,8 @@ Plug 'bogado/file-line'
 " Vim wiki :)
 Plug 'vimwiki/vimwiki'
   let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+  " Don't use vimwiki filetype outside of the wiki path
+  let g:vimwiki_global_ext = 0
 
 " Easily toggle quickfix and locations lists with <leader>l and <leader>q
 Plug 'milkypostman/vim-togglelist'
@@ -194,9 +265,21 @@ Plug 'w0rp/ale'
   " wait a bit before checking syntax in a file, if typing
   let g:ale_lint_delay = 5000
   " Use global eslint
-  let g:ale_javascript_eslint_use_global = 1
+  " let g:ale_javascript_eslint_use_global = 1
   " Only use es6 for js
-  let g:ale_linters = {'javascript': ['eslint']}
+  "let g:ale_linters = {'javascript': ['eslint'], 'javascript.jsx': ['eslint']}
+  "let g:ale_linters = {'javascript': ['eslint', 'flow', 'xo']}
+  let g:ale_linters = {'javascript': ['flow']}
+  let g:ale_lint_on_save = 0
+	let g:ale_lint_on_text_changed = 0
+  " let g:ale_fixers = {
+  " \   'javascript': [
+  " \       'eslint',
+  " \   ],
+  " \}
+
+" Coala integration
+"Plug 'coala/coala-vim'
 
 " git support from dat tpope
 Plug 'tpope/vim-fugitive'
@@ -265,6 +348,7 @@ Plug 'vim-airline/vim-airline-themes'
   let g:airline_branch_prefix = '⎇ '
   let g:airline_paste_symbol = '∥'
   let g:airline#extensions#tabline#enabled = 0
+  let g:airline#extensions#ale#enabled = 1
 
 """ Code Navigation #code-navigation
 " fzf fuzzy finder
@@ -481,9 +565,9 @@ augroup viml
   autocmd FileType vim setlocal formatoptions=tcrq
 augroup END
 
-augroup js
-  autocmd BufWritePre *.js Neoformat
-augroup END
+" augroup js
+"   autocmd BufWritePre *.js Neoformat
+" augroup END
 
 """"" End Filetypes ====================
 
