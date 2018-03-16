@@ -29,7 +29,7 @@ set shiftwidth=2
 
 """ Format Options #format-options
 set formatoptions=tcrq
-set textwidth=80
+set textwidth=100
 
 """ Handling backup copies
 " make a copy of the file and overwrite the original one
@@ -110,56 +110,36 @@ Plug 'karthikv/tradeship-vim'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
-  "
-  " ## vim-prettier configuration ##
-  "
-  " max line length that prettier will wrap on
-  " Prettier default: 80
-  let g:prettier#config#print_width = 80
+
+  let g:prettier#autoformat = 0
+  autocmd BufWritePre *.js,*.css,*.scss,*.less PrettierAsync
+
+  " max line lengh that prettier will wrap on
+  let g:prettier#config#print_width = 100
 
   " number of spaces per indentation level
-  " Prettier default: 2
   let g:prettier#config#tab_width = 2
 
   " use tabs over spaces
-  " Prettier default: false
   let g:prettier#config#use_tabs = 'false'
-  let g:prettier#autoformat = 0
-  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.graphql PrettierAsync
 
   " print semicolons
-  " Prettier default: true
   let g:prettier#config#semi = 'true'
 
   " single quotes over double quotes
-  " Prettier default: false
   let g:prettier#config#single_quote = 'true'
 
   " print spaces between brackets
-  " Prettier default: true
   let g:prettier#config#bracket_spacing = 'true'
 
   " put > on the last line instead of new line
-  " Prettier default: false
   let g:prettier#config#jsx_bracket_same_line = 'false'
 
-  " avoid|always
-  " Prettier default: avoid
-  let g:prettier#config#arrow_parens = 'avoid'
-
   " none|es5|all
-  " Prettier default: none
-  let g:prettier#config#trailing_comma = 'none'
+  let g:prettier#config#trailing_comma = 'all'
 
-  " flow|babylon|typescript|css|less|scss|json|graphql|markdown
-  " Prettier default: babylon
+  " flow|babylon|typescript|postcss
   let g:prettier#config#parser = 'flow'
-
-  " cli-override|file-override|prefer-file
-  let g:prettier#config#config_precedence = 'prefer-file'
-
-  " always|never|preserve
-  let g:prettier#config#prose_wrap = 'preserve'
 
 " Elixir
 Plug 'elixir-lang/vim-elixir'
@@ -554,14 +534,14 @@ augroup END
 
 augroup markdown
   autocmd!
-  autocmd FileType markdown setlocal textwidth=80
+  autocmd FileType markdown setlocal textwidth=100
   autocmd FileType markdown setlocal formatoptions=tcrq
   autocmd FileType markdown setlocal spell spelllang=en
 augroup END
 
 augroup viml
   autocmd!
-  autocmd FileType vim setlocal textwidth=80
+  autocmd FileType vim setlocal textwidth=100
   autocmd FileType vim setlocal formatoptions=tcrq
 augroup END
 
